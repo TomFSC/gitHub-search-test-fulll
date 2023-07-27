@@ -1,3 +1,4 @@
+import SearchSection from './SearchSection/SearchSection'
 import TopBar from './TopBar/TopBar'
 import './githubSearchPage.css'
 
@@ -5,18 +6,7 @@ function GitHubSearchPage() {
   return (
     <div className="container">
         <TopBar/>
-        <div className="search-section">
-            <div className="search-input">
-                <input type="text" placeholder='search for user'/>
-            </div>
-            <div className="editing">
-                <input type="checkbox" />
-                <div className="actions">
-                    <span>Edit</span>
-                    <span>Delete</span>
-                </div>
-            </div>
-        </div>
+        <SearchSection/>
         <div className="github-profile-container">
             <div className="card">
                 <input type="checkbox" />
