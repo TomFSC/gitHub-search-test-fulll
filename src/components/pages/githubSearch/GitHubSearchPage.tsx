@@ -4,7 +4,7 @@ import './githubSearchPage.css'
 function GitHubSearchPage() {
   return (
     <div className="container">
-        <div className="topbar">Github Search</div>
+        <TopBar/>
         <div className="search-section">
             <div className="search-input">
                 <input type="text" placeholder='search for user'/>
