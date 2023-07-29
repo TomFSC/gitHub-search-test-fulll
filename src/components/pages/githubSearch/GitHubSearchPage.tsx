@@ -30,6 +30,7 @@ function GitHubSearchPage() {
     setUsersSelected(users);
     setIsAllChecked(!isAllChecked);
   };
+
   const debouncedValue = useDebounce(userSearched);
 
   const checkIfAllSelected = () => {
@@ -67,6 +68,30 @@ function GitHubSearchPage() {
     setUsersSelected([...usersSelected, user]);
   };
 
+  const onDuplicate = () => {
+    if (!users) return;
+    const duplicateItems = usersSelected.map((userSelected: any) => {
+      return { ...userSelected, id: crypto.randomUUID() };
+    });
+
+    setUsers([...users, ...duplicateItems]);
+    setUsersSelected([...usersSelected, ...duplicateItems]);
+  };
+
+  function getDifferenceBetweenArrays(users: any[], usersSelected: any[]) {
+    return users.filter((user) => {
+      return !usersSelected.some((userSelected) => {
+        return user.id === userSelected.id;
+      });
+    });
+  }
+
+  const onDelete = () => {
+    if (!users) return;
+    const newArray = getDifferenceBetweenArrays(users, usersSelected);
+    setUsers(newArray);
+  };
+
   return (
     <div className="container">
       <TopBar onClick={handleClick} isEditMode={isEditMode} />
@@ -76,6 +101,8 @@ function GitHubSearchPage() {
         onCheckAll={onCheckAll}
         isChecked={isAllChecked}
         value={userSearched}
+        onDuplicate={onDuplicate}
+        onDelete={onDelete}
       />
 
       <GithubUsers

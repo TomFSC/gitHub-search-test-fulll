@@ -17,9 +17,9 @@ function GithubUsers({
   if (!users) return <span>Aucun résultat...</span>;
   return (
     <div className="github-profile-container">
-      {users.map((user) => (
+      {users.map((user, index) => (
         <Card
-          key={user.id}
+          key={index}
           isEditMode={isEditMode}
           user={user}
           onChange={onCheckOne}

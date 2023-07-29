@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, MouseEventHandler } from "react";
 import "./searchSection.css";
 
 interface SearchSectionProps {
@@ -7,6 +7,8 @@ interface SearchSectionProps {
   onCheckAll: ChangeEventHandler;
   isChecked: boolean;
   value: string;
+  onDuplicate?: MouseEventHandler;
+  onDelete?: MouseEventHandler;
 }
 
 function SearchSection({
@@ -15,6 +17,8 @@ function SearchSection({
   onCheckAll,
   isChecked,
   value,
+  onDuplicate,
+  onDelete,
 }: SearchSectionProps) {
   return (
     <div className="search-section">
@@ -30,8 +34,8 @@ function SearchSection({
         <div className="editing">
           <input type="checkbox" onChange={onCheckAll} checked={isChecked} />
           <div className="actions">
-            <span>Edit</span>
-            <span>Delete</span>
+            <span onClick={onDuplicate}>Duplicate</span>
+            <span onClick={onDelete}>Delete</span>
           </div>
         </div>
       )}
