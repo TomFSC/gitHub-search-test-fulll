@@ -1,20 +1,26 @@
-import { useState } from "react";
 import Card from "./Card";
 import "./githubUsers.css";
 
 interface GithubUsersProps {
-  users: any[] | undefined; //define user Type
+  isEditMode: boolean;
   usersSelected: any;
   onCheckOne: any;
+  users: any[] | undefined;
 }
 
-function GithubUsers({ users, usersSelected, onCheckOne }: GithubUsersProps) {
+function GithubUsers({
+  usersSelected,
+  onCheckOne,
+  users,
+  isEditMode,
+}: GithubUsersProps) {
   if (!users) return <span>Aucun résultat...</span>;
   return (
     <div className="github-profile-container">
       {users.map((user) => (
         <Card
           key={user.id}
+          isEditMode={isEditMode}
           user={user}
           onChange={onCheckOne}
           isChecked={usersSelected.includes(user)}

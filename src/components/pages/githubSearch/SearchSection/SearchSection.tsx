@@ -2,6 +2,7 @@ import { ChangeEventHandler } from "react";
 import "./searchSection.css";
 
 interface SearchSectionProps {
+  isEditMode: boolean;
   handleChange: ChangeEventHandler;
   onCheckAll: ChangeEventHandler;
   isChecked: boolean;
@@ -9,6 +10,7 @@ interface SearchSectionProps {
 }
 
 function SearchSection({
+  isEditMode,
   handleChange,
   onCheckAll,
   isChecked,
@@ -24,13 +26,15 @@ function SearchSection({
           value={value}
         />
       </div>
-      <div className="editing">
-        <input type="checkbox" onChange={onCheckAll} checked={isChecked} />
-        <div className="actions">
-          <span>Edit</span>
-          <span>Delete</span>
+      {isEditMode && (
+        <div className="editing">
+          <input type="checkbox" onChange={onCheckAll} checked={isChecked} />
+          <div className="actions">
+            <span>Edit</span>
+            <span>Delete</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

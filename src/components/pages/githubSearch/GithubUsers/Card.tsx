@@ -1,13 +1,15 @@
-function Card({ user, onChange, isChecked }: any) {
+function Card({ user, onChange, isChecked, isEditMode }: any) {
   const { login, avatar_url, id } = user;
 
   return (
     <div className="card">
-      <input
-        type="checkbox"
-        onChange={() => onChange(user)}
-        checked={isChecked}
-      />
+      {isEditMode && (
+        <input
+          type="checkbox"
+          onChange={() => onChange(user)}
+          checked={isChecked}
+        />
+      )}
       <div className="avatar">
         <img src={avatar_url} alt="profile-avatar" />
       </div>

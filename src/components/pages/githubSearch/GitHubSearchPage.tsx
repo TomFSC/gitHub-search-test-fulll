@@ -3,12 +3,18 @@ import GithubUsers from "./GithubUsers/GithubUsers";
 import SearchSection from "./SearchSection/SearchSection";
 import TopBar from "./TopBar/TopBar";
 import "./githubSearchPage.css";
+import useDebounce from "../../../hooks/useDebounce";
 
 function GitHubSearchPage() {
   const [users, setUsers] = useState<any[] | undefined>(undefined); //Define user Type
+  const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [userSearched, setUserSearched] = useState<string>("");
   const [usersSelected, setUsersSelected] = useState<any>([]);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsEditMode(!isEditMode);
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
@@ -24,6 +30,7 @@ function GitHubSearchPage() {
     setUsersSelected(users);
     setIsAllChecked(!isAllChecked);
   };
+  const debouncedValue = useDebounce(userSearched);
 
   const checkIfAllSelected = () => {
     setIsAllChecked(usersSelected.length === users?.length);
@@ -32,6 +39,21 @@ function GitHubSearchPage() {
   useEffect(() => {
     checkIfAllSelected();
   }, [usersSelected]);
+
+  const getUsers = async () => {
+    const datas = await fetch(
+      `https://api.github.com/search/users?q=${debouncedValue}`,
+      {
+        method: "GET",
+      }
+    );
+    const foundedUsers = await datas.json();
+    setUsers(foundedUsers.items);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, [debouncedValue]);
 
   const onCheckOne = async (user: any) => {
     if (usersSelected.includes(user)) {
@@ -45,28 +67,19 @@ function GitHubSearchPage() {
     setUsersSelected([...usersSelected, user]);
   };
 
-  const getUsers = async () => {
-    const datas = await fetch("https://api.github.com/search/users?q=Tom", {
-      method: "GET",
-    });
-    const foundedUsers = await datas.json();
-    setUsers(foundedUsers.items);
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
   return (
     <div className="container">
-      <TopBar />
+      <TopBar onClick={handleClick} isEditMode={isEditMode} />
       <SearchSection
+        isEditMode={isEditMode}
         handleChange={handleChange}
         onCheckAll={onCheckAll}
         isChecked={isAllChecked}
         value={userSearched}
       />
+
       <GithubUsers
+        isEditMode={isEditMode}
         users={users}
         usersSelected={usersSelected}
         onCheckOne={onCheckOne}
