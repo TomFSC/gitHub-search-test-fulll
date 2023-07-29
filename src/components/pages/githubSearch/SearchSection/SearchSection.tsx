@@ -3,9 +3,17 @@ import "./searchSection.css";
 
 interface SearchSectionProps {
   handleChange: ChangeEventHandler;
+  onCheckAll: ChangeEventHandler;
+  isChecked: boolean;
+  value: string;
 }
 
-function SearchSection({ handleChange }: SearchSectionProps) {
+function SearchSection({
+  handleChange,
+  onCheckAll,
+  isChecked,
+  value,
+}: SearchSectionProps) {
   return (
     <div className="search-section">
       <div className="input">
@@ -13,10 +21,11 @@ function SearchSection({ handleChange }: SearchSectionProps) {
           type="text"
           placeholder="search for user"
           onChange={handleChange}
+          value={value}
         />
       </div>
       <div className="editing">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={onCheckAll} checked={isChecked} />
         <div className="actions">
           <span>Edit</span>
           <span>Delete</span>

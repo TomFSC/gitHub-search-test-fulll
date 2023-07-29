@@ -6,11 +6,43 @@ import "./githubSearchPage.css";
 
 function GitHubSearchPage() {
   const [users, setUsers] = useState<any[] | undefined>(undefined); //Define user Type
-  const [user, setUser] = useState<string>("");
+  const [userSearched, setUserSearched] = useState<string>("");
+  const [usersSelected, setUsersSelected] = useState<any>([]);
+  const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
-    setUser(value);
+    setUserSearched(value);
+  };
+
+  const onCheckAll = () => {
+    if (isAllChecked) {
+      setUsersSelected([]);
+      setIsAllChecked(!isAllChecked);
+      return;
+    }
+    setUsersSelected(users);
+    setIsAllChecked(!isAllChecked);
+  };
+
+  const checkIfAllSelected = () => {
+    setIsAllChecked(usersSelected.length === users?.length);
+  };
+
+  useEffect(() => {
+    checkIfAllSelected();
+  }, [usersSelected]);
+
+  const onCheckOne = async (user: any) => {
+    if (usersSelected.includes(user)) {
+      const newArray = usersSelected.filter(
+        (userSelected: any) => userSelected !== user
+      );
+      setUsersSelected(newArray);
+      setIsAllChecked(false);
+      return;
+    }
+    setUsersSelected([...usersSelected, user]);
   };
 
   const getUsers = async () => {
@@ -25,12 +57,20 @@ function GitHubSearchPage() {
     getUsers();
   }, []);
 
-  console.log("users :", users);
   return (
     <div className="container">
       <TopBar />
-      <SearchSection handleChange={handleChange} />
-      <GithubUsers users={users} />
+      <SearchSection
+        handleChange={handleChange}
+        onCheckAll={onCheckAll}
+        isChecked={isAllChecked}
+        value={userSearched}
+      />
+      <GithubUsers
+        users={users}
+        usersSelected={usersSelected}
+        onCheckOne={onCheckOne}
+      />
     </div>
   );
 }

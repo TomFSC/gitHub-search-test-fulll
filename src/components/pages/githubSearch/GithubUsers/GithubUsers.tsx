@@ -1,24 +1,24 @@
+import { useState } from "react";
+import Card from "./Card";
 import "./githubUsers.css";
 
 interface GithubUsersProps {
   users: any[] | undefined; //define user Type
+  usersSelected: any;
+  onCheckOne: any;
 }
 
-function GithubUsers({ users }: GithubUsersProps) {
+function GithubUsers({ users, usersSelected, onCheckOne }: GithubUsersProps) {
   if (!users) return <span>Aucun résultat...</span>;
   return (
     <div className="github-profile-container">
-      {users.map(({ avatar_url, login, id }) => (
-        <div key={login} className="card">
-          <input type="checkbox" />
-          <div className="avatar">
-            <img src={avatar_url} alt="profile-avatar" />
-          </div>
-          <span>{id}</span>
-          <br />
-          <span>{login}</span>
-          <button>View profile</button>
-        </div>
+      {users.map((user) => (
+        <Card
+          key={user.id}
+          user={user}
+          onChange={onCheckOne}
+          isChecked={usersSelected.includes(user)}
+        />
       ))}
     </div>
   );
