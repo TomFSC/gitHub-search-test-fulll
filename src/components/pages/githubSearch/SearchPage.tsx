@@ -1,12 +1,34 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import GithubUsers from "./GithubUsers/GithubUsers";
-import SearchSection from "./SearchSection/SearchSection";
 import TopBar from "./TopBar/TopBar";
-import "./githubSearchPage.css";
+import "./searchPage.css";
 import useDebounce from "../../../hooks/useDebounce";
+import Users from "./Users/Users";
+import Actions from "./Actions/Actions";
 
-function GitHubSearchPage() {
-  const [users, setUsers] = useState<any[] | undefined>(undefined); //Define user Type
+export type User = {
+  avatar_url: string;
+  events_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  gravatar_id: string;
+  html_url: string;
+  id: number;
+  login: string;
+  node_id: string;
+  organizations_url: string;
+  received_events_url: string;
+  repos_url: string;
+  score: number;
+  site_admin: boolean;
+  starred_url: string;
+  subscriptions_url: string;
+  type: string;
+  url: string;
+};
+
+function SearchPage() {
+  const [users, setUsers] = useState<User[] | undefined>(undefined); //Define user Type
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [userSearched, setUserSearched] = useState<string>("");
   const [usersSelected, setUsersSelected] = useState<any>([]);
@@ -22,6 +44,7 @@ function GitHubSearchPage() {
   };
 
   const onCheckAll = () => {
+    if (!users) return;
     if (isAllChecked) {
       setUsersSelected([]);
       setIsAllChecked(!isAllChecked);
@@ -42,6 +65,10 @@ function GitHubSearchPage() {
   }, [usersSelected]);
 
   const getUsers = async () => {
+    if (userSearched === "") {
+      setUsers(undefined);
+      return;
+    }
     const datas = await fetch(
       `https://api.github.com/search/users?q=${debouncedValue}`,
       {
@@ -56,10 +83,10 @@ function GitHubSearchPage() {
     getUsers();
   }, [debouncedValue]);
 
-  const onCheckOne = async (user: any) => {
+  const onCheckOne = async (user: User) => {
     if (usersSelected.includes(user)) {
       const newArray = usersSelected.filter(
-        (userSelected: any) => userSelected !== user
+        (userSelected: User) => userSelected !== user
       );
       setUsersSelected(newArray);
       setIsAllChecked(false);
@@ -70,7 +97,7 @@ function GitHubSearchPage() {
 
   const onDuplicate = () => {
     if (!users) return;
-    const duplicateItems = usersSelected.map((userSelected: any) => {
+    const duplicateItems = usersSelected.map((userSelected: User) => {
       return { ...userSelected, id: crypto.randomUUID() };
     });
 
@@ -78,7 +105,7 @@ function GitHubSearchPage() {
     setUsersSelected([...usersSelected, ...duplicateItems]);
   };
 
-  function getDifferenceBetweenArrays(users: any[], usersSelected: any[]) {
+  function getDifferenceBetweenArrays(users: User[], usersSelected: User[]) {
     return users.filter((user) => {
       return !usersSelected.some((userSelected) => {
         return user.id === userSelected.id;
@@ -95,8 +122,9 @@ function GitHubSearchPage() {
   return (
     <div className="container">
       <TopBar onClick={handleClick} isEditMode={isEditMode} />
-      <SearchSection
+      <Actions
         isEditMode={isEditMode}
+        nbOfSelectedUsers={usersSelected?.length}
         handleChange={handleChange}
         onCheckAll={onCheckAll}
         isChecked={isAllChecked}
@@ -105,7 +133,7 @@ function GitHubSearchPage() {
         onDelete={onDelete}
       />
 
-      <GithubUsers
+      <Users
         isEditMode={isEditMode}
         users={users}
         usersSelected={usersSelected}
@@ -115,4 +143,4 @@ function GitHubSearchPage() {
   );
 }
 
-export default GitHubSearchPage;
+export default SearchPage;

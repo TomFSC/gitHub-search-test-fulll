@@ -1,20 +1,16 @@
+import { User } from "../SearchPage";
 import Card from "./Card";
-import "./githubUsers.css";
+import "./users.css";
 
-interface GithubUsersProps {
+interface UsersProps {
   isEditMode: boolean;
-  usersSelected: any;
-  onCheckOne: any;
-  users: any[] | undefined;
+  usersSelected: User[];
+  onCheckOne: (user: User) => void;
+  users: User[] | undefined;
 }
 
-function GithubUsers({
-  usersSelected,
-  onCheckOne,
-  users,
-  isEditMode,
-}: GithubUsersProps) {
-  if (!users) return <span>Aucun résultat...</span>;
+function Users({ usersSelected, onCheckOne, users, isEditMode }: UsersProps) {
+  if (!users || users.length === 0) return <span>Aucun résultat...</span>;
   return (
     <div className="github-profile-container">
       {users.map((user, index) => (
@@ -30,4 +26,4 @@ function GithubUsers({
   );
 }
 
-export default GithubUsers;
+export default Users;

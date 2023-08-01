@@ -1,9 +1,9 @@
-import GitHubSearchPage from "./components/pages/githubSearch/GitHubSearchPage";
+import SearchPage from "./components/pages/githubSearch/SearchPage";
 
 function App() {
   return (
     <div className="App">
-      <GitHubSearchPage/>
+      <SearchPage />
     </div>
   );
 }

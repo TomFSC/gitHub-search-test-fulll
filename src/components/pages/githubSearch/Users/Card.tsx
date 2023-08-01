@@ -1,4 +1,14 @@
-function Card({ user, onChange, isChecked, isEditMode }: any) {
+import { ChangeEventHandler } from "react";
+import { User } from "../SearchPage";
+
+interface CardProps {
+  user: User;
+  onChange: (user: User) => void;
+  isChecked: boolean;
+  isEditMode: boolean;
+}
+
+function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
   const { login, avatar_url, id } = user;
 
   return (
