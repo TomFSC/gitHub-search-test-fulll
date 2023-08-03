@@ -1,3 +1,4 @@
+import Checkbox from "../../../../reusable-ui/Checkbox";
 import { User } from "../../SearchPage";
 import "./card.css";
 
@@ -14,9 +15,8 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
   return (
     <div className="card">
       {isEditMode && (
-        <input
+        <Checkbox
           className="card-checkbox"
-          type="checkbox"
           onChange={() => onChange(user)}
           checked={isChecked}
         />

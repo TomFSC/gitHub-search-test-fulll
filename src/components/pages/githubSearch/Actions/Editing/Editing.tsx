@@ -1,12 +1,13 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
 import "./editing.css";
+import Checkbox from "../../../../reusable-ui/Checkbox";
 
 interface EditingProps {
   nbOfSelectedUsers: number;
   onChange: ChangeEventHandler;
   onDuplicate: MouseEventHandler;
   onDelete: MouseEventHandler;
-  isChecked: boolean;
+  isAllChecked: boolean;
 }
 
 function Editing({
@@ -14,16 +15,16 @@ function Editing({
   onChange,
   onDelete,
   onDuplicate,
-  isChecked,
+  isAllChecked,
 }: EditingProps) {
   return (
     <div className="editing">
       <div className="check-all">
-        <input type="checkbox" onChange={onChange} checked={isChecked} />
-        <span>
-          {nbOfSelectedUsers}{" "}
+        <Checkbox onChange={onChange} checked={isAllChecked} />
+        <div className="selected-users-count">
+          <span className="count">{nbOfSelectedUsers}</span>{" "}
           {nbOfSelectedUsers > 1 ? "elements selected" : "element selected"}
-        </span>
+        </div>
       </div>
       <div className="actions">
         <span onClick={onDuplicate}>

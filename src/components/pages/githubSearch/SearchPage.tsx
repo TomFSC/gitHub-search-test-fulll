@@ -127,7 +127,7 @@ function SearchPage() {
         nbOfSelectedUsers={usersSelected?.length}
         handleChange={handleChange}
         onCheckAll={onCheckAll}
-        isChecked={isAllChecked}
+        isAllChecked={isAllChecked}
         value={userSearched}
         onDuplicate={onDuplicate}
         onDelete={onDelete}

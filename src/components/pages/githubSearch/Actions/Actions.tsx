@@ -8,7 +8,7 @@ interface ActionsProps {
   nbOfSelectedUsers: number;
   handleChange: ChangeEventHandler;
   onCheckAll: ChangeEventHandler;
-  isChecked: boolean;
+  isAllChecked: boolean;
   value: string;
   onDuplicate: MouseEventHandler;
   onDelete: MouseEventHandler;
@@ -19,7 +19,7 @@ function Actions({
   nbOfSelectedUsers,
   handleChange,
   onCheckAll,
-  isChecked,
+  isAllChecked,
   value,
   onDuplicate,
   onDelete,
@@ -34,7 +34,7 @@ function Actions({
           onChange={onCheckAll}
           onDelete={onDelete}
           onDuplicate={onDuplicate}
-          isChecked={isChecked}
+          isAllChecked={isAllChecked}
         />
       )}
     </div>
