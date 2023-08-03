@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import TopBar from "./TopBar/TopBar";
+import Header from "./Header/Header";
 import "./searchPage.css";
 import useDebounce from "../../../hooks/useDebounce";
 import Users from "./Users/Users";
@@ -121,7 +121,7 @@ function SearchPage() {
 
   return (
     <div className="container">
-      <TopBar onClick={handleClick} isEditMode={isEditMode} />
+      <Header onClick={handleClick} isEditMode={isEditMode} />
       <Actions
         isEditMode={isEditMode}
         nbOfSelectedUsers={usersSelected?.length}

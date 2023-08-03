@@ -1,12 +1,12 @@
-import "./topbar.css";
+import "./header.css";
 
-function TopBar({ onClick, isEditMode }: any) {
+function Header({ onClick, isEditMode }: any) {
   return (
-    <div className="topbar">
+    <div className="header">
       <h1>GitHub Search</h1>
       <button onClick={onClick}>{isEditMode ? "X" : "EditMode"}</button>
     </div>
   );
 }
 
-export default TopBar;
+export default Header;
