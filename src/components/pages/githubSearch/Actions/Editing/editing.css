@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 15px 15px;
+  padding: 0 15px 25px;
 }
 
 .check-all {
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   -moz-column-gap: 10px;
-  column-gap: 10px;
+  column-gap: 20px;
   color: #5f6368;
   font-size: large;
   &:hover {
