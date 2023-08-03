@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Header from "./Header/Header";
 import "./searchPage.css";
 import useDebounce from "../../../hooks/useDebounce";
-import Users from "./Users/Users";
+import Users from "./SearchResult/SearchResult";
 import Actions from "./Actions/Actions";
 
 export type User = {
