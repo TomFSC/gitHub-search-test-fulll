@@ -1,5 +1,22 @@
 .editing {
-  border: 2px solid red;
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  padding: 0 15px 15px;
+}
+
+.check-all {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+  column-gap: 8px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  color: #5f6368;
+  font-size: large;
 }
