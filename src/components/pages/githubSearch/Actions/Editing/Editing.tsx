@@ -1,6 +1,8 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
 import "./editing.css";
 import Checkbox from "../../../../reusable-ui/Checkbox";
+import { getActionsIcons } from "./actionsIconsConfig";
+import Icons from "./Icons";
 
 interface EditingProps {
   nbOfSelectedUsers: number;
@@ -17,6 +19,7 @@ function Editing({
   onDuplicate,
   isAllChecked,
 }: EditingProps) {
+  const actionsIcons = getActionsIcons(onDuplicate, onDelete);
   return (
     <div className="editing">
       <div className="check-all">
@@ -26,14 +29,7 @@ function Editing({
           {nbOfSelectedUsers > 1 ? "elements selected" : "element selected"}
         </div>
       </div>
-      <div className="actions">
-        <span onClick={onDuplicate}>
-          <i className="fa-regular fa-copy"></i>
-        </span>
-        <span onClick={onDelete}>
-          <i className="fa-regular fa-trash-can"></i>
-        </span>
-      </div>
+      <Icons actionsIcons={actionsIcons} />
     </div>
   );
 }
