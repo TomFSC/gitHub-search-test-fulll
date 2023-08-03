@@ -16,7 +16,6 @@ function Editing({
   onDuplicate,
   isChecked,
 }: EditingProps) {
-  console.log("nbOfSelectedUsers :", nbOfSelectedUsers);
   return (
     <div className="editing">
       <input type="checkbox" onChange={onChange} checked={isChecked} />
@@ -25,8 +24,12 @@ function Editing({
         {nbOfSelectedUsers > 1 ? "elements selected" : "element selected"}
       </span>
       <div className="actions">
-        <span onClick={onDuplicate}>Duplicate</span>
-        <span onClick={onDelete}>Delete</span>
+        <span onClick={onDuplicate}>
+          <i className="fa-regular fa-copy"></i>
+        </span>
+        <span onClick={onDelete}>
+          <i className="fa-regular fa-trash-can"></i>
+        </span>
       </div>
     </div>
   );
