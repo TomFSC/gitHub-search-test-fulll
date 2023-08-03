@@ -28,7 +28,7 @@ export type User = {
 };
 
 function SearchPage() {
-  const [users, setUsers] = useState<User[] | undefined>(undefined); //Define user Type
+  const [users, setUsers] = useState<User[] | undefined>(undefined);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [userSearched, setUserSearched] = useState<string>("");
   const [usersSelected, setUsersSelected] = useState<any>([]);
@@ -57,7 +57,9 @@ function SearchPage() {
   const debouncedValue = useDebounce(userSearched);
 
   const checkIfAllSelected = () => {
-    setIsAllChecked(usersSelected.length === users?.length);
+    setIsAllChecked(
+      usersSelected.length === users?.length && users?.length !== 0
+    );
   };
 
   useEffect(() => {
@@ -102,7 +104,7 @@ function SearchPage() {
     });
 
     setUsers([...users, ...duplicateItems]);
-    setUsersSelected([...usersSelected, ...duplicateItems]);
+    setIsAllChecked(false);
   };
 
   function getDifferenceBetweenArrays(users: User[], usersSelected: User[]) {
@@ -117,6 +119,8 @@ function SearchPage() {
     if (!users) return;
     const newArray = getDifferenceBetweenArrays(users, usersSelected);
     setUsers(newArray);
+    setUsersSelected([]);
+    setIsAllChecked(false);
   };
 
   return (

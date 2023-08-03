@@ -1,7 +1,7 @@
-import React from "react";
+import { ActionIcon } from "./actionsIconsConfig";
 
 interface IconsProps {
-  actionsIcons: any[];
+  actionsIcons: ActionIcon[];
 }
 
 function Icons({ actionsIcons }: IconsProps) {
