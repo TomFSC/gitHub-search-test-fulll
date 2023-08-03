@@ -1,16 +1,19 @@
 .github-profile-container {
   border: 1px solid black;
   width: 98%;
-  margin: auto;
-  height: 85%;
+  margin-bottom: 10px;
+  height: 95%;
   overflow: scroll;
+  padding: 15px 20px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.users {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   row-gap: 20px;
   -moz-column-gap: 25px;
   column-gap: 25px;
-  padding: 15px 0px 15px 20px;
-  &::-webkit-scrollbar {
-    scroll-behavior: unset;
-  }
 }
