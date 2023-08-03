@@ -1,5 +1,8 @@
 import Checkbox from "../../../../reusable-ui/Checkbox";
 import { User } from "../../SearchPage";
+import Avatar from "./Avatar";
+import CardBtn from "./CardBtn";
+import ProfileInfos from "./ProfileInfos";
 import "./card.css";
 
 interface CardProps {
@@ -13,7 +16,7 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
   const { login, avatar_url, id } = user;
 
   return (
-    <div className="card">
+    <div className="card-container">
       {isEditMode && (
         <Checkbox
           className="card-checkbox"
@@ -21,15 +24,9 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
           checked={isChecked}
         />
       )}
-      <div className="avatar">
-        <img src={avatar_url} alt="profile-avatar" />
-      </div>
-      <div className="infos">
-        <span>{id}</span>
-        <br />
-        <span>{login}</span>
-      </div>
-      <button className="profile-btn">View profile</button>
+      <Avatar avatar_url={avatar_url} />
+      <ProfileInfos id={id} login={login} />
+      <CardBtn className="card-btn" label="View profile" />
     </div>
   );
 }

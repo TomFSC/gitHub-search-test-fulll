@@ -1,4 +1,4 @@
-.card {
+.card-container {
   height: 120px;
   width: 100px;
   position: relative;
@@ -38,7 +38,7 @@ img {
   font-size: 11px;
 }
 
-.profile-btn {
+.card-btn {
   width: 80%;
   height: 25px;
   border: none;
