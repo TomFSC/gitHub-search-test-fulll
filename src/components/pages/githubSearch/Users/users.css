@@ -1,14 +1,21 @@
 .github-profile-container {
-  background: pink;
-  width: 100%;
+  border: 1px solid black;
+  width: 98%;
+  margin: auto;
   height: 85%;
   overflow: scroll;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  row-gap: 20px;
+  -moz-column-gap: 25px;
+  column-gap: 25px;
+  padding: 15px 0px 15px 20px;
+  &::-webkit-scrollbar {
+    scroll-behavior: unset;
+  }
 }
 
 .card {
-  border: 2px solid purple;
   height: 150px;
   width: 100px;
 }
