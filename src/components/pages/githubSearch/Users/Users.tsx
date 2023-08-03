@@ -1,5 +1,5 @@
 import { User } from "../SearchPage";
-import Card from "./Card";
+import Card from "./Card/Card";
 import "./users.css";
 
 interface UsersProps {

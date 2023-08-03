@@ -14,12 +14,3 @@
     scroll-behavior: unset;
   }
 }
-
-.card {
-  height: 150px;
-  width: 100px;
-}
-img {
-  height: 30px;
-  width: 30px;
-}

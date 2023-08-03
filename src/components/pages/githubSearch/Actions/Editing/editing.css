@@ -10,6 +10,11 @@
   align-items: center;
   -moz-column-gap: 8px;
   column-gap: 8px;
+  & input {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .actions {
@@ -19,4 +24,7 @@
   column-gap: 10px;
   color: #5f6368;
   font-size: large;
+  &:hover {
+    cursor: pointer;
+  }
 }

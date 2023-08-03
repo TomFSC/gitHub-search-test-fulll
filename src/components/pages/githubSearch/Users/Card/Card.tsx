@@ -1,5 +1,5 @@
-import { ChangeEventHandler } from "react";
-import { User } from "../SearchPage";
+import { User } from "../../SearchPage";
+import "./card.css";
 
 interface CardProps {
   user: User;
@@ -15,6 +15,7 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
     <div className="card">
       {isEditMode && (
         <input
+          className="card-checkbox"
           type="checkbox"
           onChange={() => onChange(user)}
           checked={isChecked}
@@ -23,10 +24,12 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
       <div className="avatar">
         <img src={avatar_url} alt="profile-avatar" />
       </div>
-      <span>{id}</span>
-      <br />
-      <span>{login}</span>
-      <button>View profile</button>
+      <div className="infos">
+        <span>{id}</span>
+        <br />
+        <span>{login}</span>
+      </div>
+      <button className="profile-btn">View profile</button>
     </div>
   );
 }

@@ -1,0 +1,60 @@
+.card {
+  height: 120px;
+  width: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: center;
+  padding: 10px 0 15px;
+  background-color: #d2d2d2;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px gray;
+}
+
+.avatar {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img {
+  height: 35px;
+  width: 35px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.infos {
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 11px;
+}
+
+.profile-btn {
+  width: 80%;
+  height: 20px;
+  border: none;
+  background-color: #479ff8;
+  border-radius: 5px;
+  font-size: 11px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.card-checkbox {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
