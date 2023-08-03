@@ -10,8 +10,9 @@ function Search({ handleChange, value }: SearchProps) {
   return (
     <div className="search-input">
       <input
+        className="input-text"
         type="text"
-        placeholder="search for user"
+        placeholder="Search for user"
         onChange={handleChange}
         value={value}
       />

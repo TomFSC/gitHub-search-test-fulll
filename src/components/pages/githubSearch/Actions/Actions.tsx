@@ -25,7 +25,7 @@ function Actions({
   onDelete,
 }: ActionsProps) {
   return (
-    <div className="search-section">
+    <div className="actions-section">
       <Search handleChange={handleChange} value={value} />
 
       {isEditMode && (
