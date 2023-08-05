@@ -34,10 +34,6 @@ function SearchPage() {
   const [usersSelected, setUsersSelected] = useState<any>([]);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
 
-  const handleClick = () => {
-    setIsEditMode(!isEditMode);
-  };
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
     setUserSearched(value);
@@ -85,7 +81,7 @@ function SearchPage() {
     getUsers();
   }, [debouncedValue]);
 
-  const onCheckOne = async (user: User) => {
+  const onCheckOne = (user: User) => {
     if (usersSelected.includes(user)) {
       const newArray = usersSelected.filter(
         (userSelected: User) => userSelected !== user
@@ -117,7 +113,10 @@ function SearchPage() {
 
   const onDelete = () => {
     if (!users) return;
+
     const newArray = getDifferenceBetweenArrays(users, usersSelected);
+    if (newArray.length === 0) setUserSearched("");
+
     setUsers(newArray);
     setUsersSelected([]);
     setIsAllChecked(false);
@@ -125,7 +124,7 @@ function SearchPage() {
 
   return (
     <div className="container">
-      <Header onClick={handleClick} isEditMode={isEditMode} />
+      <Header setIsEditMode={setIsEditMode} isEditMode={isEditMode} />
       <Actions
         isEditMode={isEditMode}
         nbOfSelectedUsers={usersSelected?.length}

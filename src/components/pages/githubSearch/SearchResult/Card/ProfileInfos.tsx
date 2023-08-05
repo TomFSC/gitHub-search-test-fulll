@@ -5,8 +5,7 @@ type ProfileInfosProps = Pick<User, "id" | "login">;
 function ProfileInfos({ id, login }: ProfileInfosProps) {
   return (
     <div className="infos">
-      <span>{id}</span>
-      <br />
+      <span className="id">{id}</span>
       <span>{login}</span>
     </div>
   );
