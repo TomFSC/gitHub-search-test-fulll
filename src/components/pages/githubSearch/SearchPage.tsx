@@ -17,6 +17,7 @@ function SearchPage() {
   const [userSearched, setUserSearched] = useState<string>("");
   const [usersSelected, setUsersSelected] = useState<Id[]>([]);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
+  const [error, setError] = useState<null | string>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
@@ -50,6 +51,7 @@ function SearchPage() {
   }, [usersSelected]);
 
   const getUsers = async () => {
+    setError(null);
     if (userSearched === "") {
       setUsers([]);
       return;
@@ -60,12 +62,17 @@ function SearchPage() {
         method: "GET",
       }
     );
-    const foundedUsers = await datas.json();
-    if (foundedUsers.items.length === 0) {
+    const response = await datas.json();
+    if (response.message) {
+      setError(response.message);
+      setUsers([]);
+      return;
+    }
+    if (response.items.length === 0) {
       setUsers(undefined);
       return;
     }
-    setUsers(foundedUsers.items);
+    setUsers(response.items);
   };
 
   useEffect(() => {
@@ -115,12 +122,18 @@ function SearchPage() {
         onDuplicate={onDuplicate}
         onDelete={onDelete}
       />
-      <SearchResult
-        usersSelected={usersSelected}
-        onCheckOne={onCheckOne}
-        users={users}
-        isEditMode={isEditMode}
-      />
+      {error ? (
+        <div>
+          <h1 style={{ color: "red", fontSize: 25 }}>{error}</h1>
+        </div>
+      ) : (
+        <SearchResult
+          usersSelected={usersSelected}
+          onCheckOne={onCheckOne}
+          users={users}
+          isEditMode={isEditMode}
+        />
+      )}
     </div>
   );
 }
