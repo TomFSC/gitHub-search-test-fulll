@@ -1,5 +1,5 @@
+import { Id, User } from "../../../../../types/users";
 import Checkbox from "../../../../reusable-ui/Checkbox";
-import { User } from "../../SearchPage";
 import Avatar from "./Avatar";
 import CardBtn from "./CardBtn";
 import ProfileInfos from "./ProfileInfos";
@@ -7,7 +7,7 @@ import "./card.css";
 
 interface CardProps {
   user: User;
-  onChange: (user: User) => void;
+  onChange: (id: Id) => void;
   isChecked: boolean;
   isEditMode: boolean;
 }
@@ -20,7 +20,7 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
       {isEditMode && (
         <Checkbox
           className="card-checkbox"
-          onChange={() => onChange(user)}
+          onChange={() => onChange(id)}
           checked={isChecked}
         />
       )}

@@ -2,36 +2,20 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Header from "./Header/Header";
 import "./searchPage.css";
 import useDebounce from "../../../hooks/useDebounce";
-import Users from "./SearchResult/SearchResult";
 import Actions from "./Actions/Actions";
-
-export type User = {
-  avatar_url: string;
-  events_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  gravatar_id: string;
-  html_url: string;
-  id: number;
-  login: string;
-  node_id: string;
-  organizations_url: string;
-  received_events_url: string;
-  repos_url: string;
-  score: number;
-  site_admin: boolean;
-  starred_url: string;
-  subscriptions_url: string;
-  type: string;
-  url: string;
-};
+import {
+  differenceBetweenArrays,
+  filterById,
+  findObjectById,
+} from "./helpers/array";
+import { Id, User } from "../../../types/users";
+import SearchResult from "./SearchResult/SearchResult";
 
 function SearchPage() {
-  const [users, setUsers] = useState<User[] | undefined>([]);
+  const [users, setUsers] = useState<User[] | undefined | []>([]);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [userSearched, setUserSearched] = useState<string>("");
-  const [usersSelected, setUsersSelected] = useState<any>([]);
+  const [usersSelected, setUsersSelected] = useState<Id[]>([]);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +30,10 @@ function SearchPage() {
       setIsAllChecked(!isAllChecked);
       return;
     }
-    setUsersSelected(users);
+    const newArray = users.map((user) => {
+      return user.id;
+    });
+    setUsersSelected(newArray);
     setIsAllChecked(!isAllChecked);
   };
 
@@ -74,7 +61,6 @@ function SearchPage() {
       }
     );
     const foundedUsers = await datas.json();
-    console.log("foundedUsers :", foundedUsers);
     if (foundedUsers.items.length === 0) {
       setUsers(undefined);
       return;
@@ -86,43 +72,32 @@ function SearchPage() {
     getUsers();
   }, [debouncedValue]);
 
-  const onCheckOne = (user: User) => {
-    if (usersSelected.includes(user)) {
-      const newArray = usersSelected.filter(
-        (userSelected: User) => userSelected !== user
-      );
-      setUsersSelected(newArray);
-      setIsAllChecked(false);
+  const onCheckOne = (id: Id) => {
+    if (usersSelected.includes(id)) {
+      const newUsersSelected = filterById(usersSelected, id);
+
+      setUsersSelected(newUsersSelected);
       return;
     }
-    setUsersSelected([...usersSelected, user]);
+    setUsersSelected([...usersSelected, id]);
+    setIsAllChecked(false);
   };
 
   const onDuplicate = () => {
     if (!users) return;
-    const duplicateItems = usersSelected.map((userSelected: User) => {
-      return { ...userSelected, id: crypto.randomUUID() };
+    const duplicateItems = usersSelected.map((userSelected: Id) => {
+      const user = findObjectById(users, userSelected);
+      return { ...user, id: crypto.randomUUID() };
     });
-
     setUsers([...users, ...duplicateItems]);
     setIsAllChecked(false);
   };
 
-  function getDifferenceBetweenArrays(users: User[], usersSelected: User[]) {
-    return users.filter((user) => {
-      return !usersSelected.some((userSelected) => {
-        return user.id === userSelected.id;
-      });
-    });
-  }
-
   const onDelete = () => {
     if (!users) return;
-
-    const newArray = getDifferenceBetweenArrays(users, usersSelected);
-    if (newArray.length === 0) setUserSearched("");
-
-    setUsers(newArray);
+    const newUsers = differenceBetweenArrays(users, usersSelected);
+    if (newUsers.length === 0) setUserSearched("");
+    setUsers(newUsers);
     setUsersSelected([]);
     setIsAllChecked(false);
   };
@@ -140,12 +115,11 @@ function SearchPage() {
         onDuplicate={onDuplicate}
         onDelete={onDelete}
       />
-
-      <Users
-        isEditMode={isEditMode}
-        users={users}
+      <SearchResult
         usersSelected={usersSelected}
         onCheckOne={onCheckOne}
+        users={users}
+        isEditMode={isEditMode}
       />
     </div>
   );

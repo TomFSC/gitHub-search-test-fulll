@@ -1,11 +1,11 @@
-import { User } from "../../SearchPage";
+import { Id, User } from "../../../../../types/users";
 import Card from "../Card/Card";
 import "./users.css";
 
 interface UsersProps {
   isEditMode: boolean;
-  usersSelected: User[];
-  onChange: (user: User) => void;
+  usersSelected: Id[];
+  onChange: (id: Id) => void;
   users: User[] | undefined;
 }
 
@@ -18,7 +18,7 @@ function Users({ usersSelected, onChange, users, isEditMode }: UsersProps) {
           isEditMode={isEditMode}
           user={user}
           onChange={onChange}
-          isChecked={usersSelected.includes(user)}
+          isChecked={usersSelected.includes(user.id)}
         />
       ))}
     </div>

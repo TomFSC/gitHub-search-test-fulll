@@ -1,12 +1,12 @@
-import { User } from "../SearchPage";
+import { Id, User } from "../../../../types/users";
 import EmptyResult from "./EmptyResult/EmptyResult";
 import Users from "./Users/Users";
 import "./searchResult.css";
 
 interface SearchResultProps {
   isEditMode: boolean;
-  usersSelected: User[];
-  onCheckOne: (user: User) => void;
+  usersSelected: Id[];
+  onCheckOne: (id: number | string) => void;
   users: User[] | undefined;
 }
 
@@ -16,7 +16,6 @@ function SearchResult({
   users,
   isEditMode,
 }: SearchResultProps) {
-  if (users?.length === 0) return null;
   return (
     <div className="search-result">
       {users === undefined ? (

@@ -1,4 +1,4 @@
-import { User } from "../../SearchPage";
+import { User } from "../../../../../types/users";
 
 type ProfileInfosProps = Pick<User, "id" | "login">;
 
