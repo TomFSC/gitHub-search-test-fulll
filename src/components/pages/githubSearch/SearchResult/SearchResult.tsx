@@ -16,9 +16,10 @@ function SearchResult({
   users,
   isEditMode,
 }: SearchResultProps) {
+  if (users?.length === 0) return null;
   return (
     <div className="search-result">
-      {!users || users.length === 0 ? (
+      {users === undefined ? (
         <EmptyResult />
       ) : (
         <Users

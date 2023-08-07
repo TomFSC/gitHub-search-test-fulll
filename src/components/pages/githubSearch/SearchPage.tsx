@@ -28,7 +28,7 @@ export type User = {
 };
 
 function SearchPage() {
-  const [users, setUsers] = useState<User[] | undefined>(undefined);
+  const [users, setUsers] = useState<User[] | undefined>([]);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [userSearched, setUserSearched] = useState<string>("");
   const [usersSelected, setUsersSelected] = useState<any>([]);
@@ -64,7 +64,7 @@ function SearchPage() {
 
   const getUsers = async () => {
     if (userSearched === "") {
-      setUsers(undefined);
+      setUsers([]);
       return;
     }
     const datas = await fetch(
@@ -74,6 +74,11 @@ function SearchPage() {
       }
     );
     const foundedUsers = await datas.json();
+    console.log("foundedUsers :", foundedUsers);
+    if (foundedUsers.items.length === 0) {
+      setUsers(undefined);
+      return;
+    }
     setUsers(foundedUsers.items);
   };
 
