@@ -110,7 +110,7 @@ function SearchPage() {
   };
 
   return (
-    <div className="container">
+    <div data-testid="main-container" className="container">
       <Header setIsEditMode={setIsEditMode} isEditMode={isEditMode} />
       <Actions
         isEditMode={isEditMode}
