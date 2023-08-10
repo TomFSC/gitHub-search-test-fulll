@@ -10,6 +10,7 @@ interface UsersProps {
 }
 
 function Users({ usersSelected, onChange, users, isEditMode }: UsersProps) {
+  //Créer la variable pour remplacer isAllChecked
   return (
     <div data-testid="users" className="users">
       {users?.map((user, index) => (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Header from "./Header/Header";
 import "./searchPage.css";
 import useDebounce from "../../../hooks/useDebounce";
@@ -7,50 +7,29 @@ import SearchResult from "./SearchResult/SearchResult";
 import { useUsers } from "../../../hooks/useUsers";
 import { useEditMode } from "../../../hooks/useEditMode";
 import { useSearch } from "../../../hooks/useSearch";
-import { Id } from "../../../types/users";
-import {
-  differenceBetweenArrays,
-  filterById,
-  findObjectById,
-} from "./helpers/array";
+
+import { useActions } from "../../../hooks/useActions";
+import { useSelect } from "../../../hooks/useSelect";
+import { User } from "../../../types/users";
 
 function SearchPage() {
-  const { search, handleSearch, setSearch } = useSearch();
+  const { search, handleSearch } = useSearch();
   const debouncedValue = useDebounce(search);
-  const { users, error, fetchUsers, setUsers } = useUsers();
+  const { users, error, fetchUsers } = useUsers();
+  const { isEditMode, handleEditMode } = useEditMode();
   const {
-    isEditMode,
-    handleEditMode,
     usersSelected,
-    checkIfAllSelected,
-    onCheckAll,
-    onCheckOne,
-    setIsAllChecked,
-    setUsersSelected,
-  } = useEditMode();
-
-  const onDuplicate = () => {
-    if (!users) return;
-    const duplicateItems = usersSelected.map((userSelected: Id) => {
-      const user = findObjectById(users, userSelected);
-      return { ...user, id: crypto.randomUUID() };
-    });
-    setUsers([...users, ...duplicateItems]);
-    setIsAllChecked(false);
-  };
-
-  const onDelete = () => {
-    if (!users) return;
-    const newUsers = differenceBetweenArrays(users, usersSelected);
-    if (newUsers.length === 0) setSearch("");
-    setUsers(newUsers);
-    setUsersSelected([]);
-    setIsAllChecked(false);
-  };
+    // checkIfAllUsersSelected,
+    handleToggleAllUsers,
+    handleCheckOne,
+  } = useSelect(users as User[]);
+  const { handleDelete, handleDuplicate } = useActions();
 
   useEffect(() => {
-    checkIfAllSelected();
-  }, [usersSelected]);
+    if (isEditMode) {
+      handleToggleAllUsers();
+    }
+  }, []);
 
   useEffect(() => {
     fetchUsers(debouncedValue);
@@ -61,11 +40,13 @@ function SearchPage() {
       <Header onClick={handleEditMode} isEditMode={isEditMode} />
       <Actions
         nbOfSelectedUsers={usersSelected?.length}
-        onCheckAll={onCheckAll}
-        onDuplicate={onDuplicate}
-        onDelete={onDelete}
+        onCheckAll={handleToggleAllUsers}
+        onDuplicate={handleDuplicate}
+        onDelete={handleDelete}
         handleChange={handleSearch}
         value={search}
+        isEditMode={isEditMode}
+        isAllChecked={true}
       />
       {error ? (
         <div data-testid="error-msg">
@@ -74,7 +55,7 @@ function SearchPage() {
       ) : (
         <SearchResult
           usersSelected={usersSelected}
-          onCheckOne={onCheckOne}
+          onCheckOne={handleCheckOne}
           users={users}
           isEditMode={isEditMode}
         />
