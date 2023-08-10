@@ -9,6 +9,7 @@ interface CheckboxProps {
 function Checkbox({ className, onChange, checked }: CheckboxProps) {
   return (
     <input
+      data-testid="check-all"
       className={className}
       type="checkbox"
       onChange={onChange}

@@ -21,12 +21,14 @@ function Editing({
 }: EditingProps) {
   const actionsIcons = getActionsIcons(onDuplicate, onDelete);
   return (
-    <div className="editing">
+    <div data-testid="editing" className="editing">
       <div className="check-all">
         <Checkbox onChange={onChange} checked={isAllChecked} />
         <div className="selected-users-count">
-          <span className="count">{nbOfSelectedUsers}</span>{" "}
-          {nbOfSelectedUsers > 1 ? "elements selected" : "element selected"}
+          <span data-testid="count" className="count">
+            {nbOfSelectedUsers}{" "}
+            {nbOfSelectedUsers > 1 ? "elements selected" : "element selected"}
+          </span>
         </div>
       </div>
       <Icons actionsIcons={actionsIcons} />

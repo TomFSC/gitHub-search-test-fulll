@@ -17,7 +17,7 @@ function SearchResult({
   isEditMode,
 }: SearchResultProps) {
   return (
-    <div className="search-result">
+    <div data-testid="result" className="search-result">
       {users === undefined ? (
         <EmptyResult />
       ) : (

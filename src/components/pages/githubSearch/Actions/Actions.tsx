@@ -2,30 +2,29 @@ import { ChangeEventHandler, MouseEventHandler } from "react";
 import "./actions.css";
 import Search from "./Search/Search";
 import Editing from "./Editing/Editing";
+import { useEditMode } from "../../../../hooks/useEditMode";
 
-interface ActionsProps {
-  isEditMode: boolean;
+export interface ActionsProps {
   nbOfSelectedUsers: number;
-  handleChange: ChangeEventHandler;
   onCheckAll: ChangeEventHandler;
-  isAllChecked: boolean;
-  value: string;
   onDuplicate: MouseEventHandler;
   onDelete: MouseEventHandler;
+  handleChange: ChangeEventHandler;
+  value: string;
 }
 
 function Actions({
-  isEditMode,
   nbOfSelectedUsers,
-  handleChange,
   onCheckAll,
-  isAllChecked,
-  value,
   onDuplicate,
   onDelete,
+  handleChange,
+  value,
 }: ActionsProps) {
+  const { isEditMode, isAllChecked } = useEditMode();
+
   return (
-    <div className="actions-section">
+    <div data-testid="actions-section" className="actions-section">
       <Search handleChange={handleChange} value={value} />
 
       {isEditMode && (

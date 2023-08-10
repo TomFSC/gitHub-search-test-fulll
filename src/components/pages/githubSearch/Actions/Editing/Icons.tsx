@@ -6,7 +6,7 @@ interface IconsProps {
 
 function Icons({ actionsIcons }: IconsProps) {
   return (
-    <div className="actions">
+    <div data-testid="icons" className="actions">
       {actionsIcons.map(({ className, onClick }) => (
         <span key={className} onClick={onClick}>
           <i className={className}></i>

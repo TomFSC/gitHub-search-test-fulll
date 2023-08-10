@@ -8,7 +8,7 @@ interface SearchProps {
 
 function Search({ handleChange, value }: SearchProps) {
   return (
-    <div className="search-input">
+    <div data-testid="search-input" className="search-input">
       <input
         className="input-text"
         type="text"

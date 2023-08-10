@@ -11,9 +11,10 @@ interface UsersProps {
 
 function Users({ usersSelected, onChange, users, isEditMode }: UsersProps) {
   return (
-    <div className="users">
+    <div data-testid="users" className="users">
       {users?.map((user, index) => (
         <Card
+          data-testid="card"
           key={index}
           isEditMode={isEditMode}
           user={user}
