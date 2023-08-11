@@ -1,14 +1,14 @@
 import { MouseEventHandler } from "react";
 
-export interface ActionIcon {
+export interface OptionIcon {
   className: string;
   onClick: MouseEventHandler;
 }
 
-export const getActionsIcons = (
+export const getOptionsIcons = (
   onDuplicate: MouseEventHandler,
   onDelete: MouseEventHandler
-): ActionIcon[] => [
+): OptionIcon[] => [
   {
     className: "fa-regular fa-copy",
     onClick: onDuplicate,
