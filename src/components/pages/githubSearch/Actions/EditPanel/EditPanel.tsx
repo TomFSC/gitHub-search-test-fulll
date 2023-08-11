@@ -1,30 +1,25 @@
-import { ChangeEventHandler, MouseEventHandler } from "react";
+import { useContext } from "react";
+import { SearchContext } from "../../../../../context/SearchContext";
 import Checkbox from "../../../../reusable-ui/Checkbox";
 import EditOptions from "./EditOptions";
 
-import { getActionsIcons } from "./actionsIconsConfig";
 import "./editPanel.css";
 
-interface EditPanelProps {
-  nbOfSelectedUsers: number;
-  onChange: ChangeEventHandler;
-  onDuplicate: MouseEventHandler;
-  onDelete: MouseEventHandler;
-  isAllChecked: boolean;
-}
+function EditPanel() {
+  const { users, usersIdsSelected, handleToggleAllUsers } =
+    useContext(SearchContext);
 
-function EditPanel({
-  nbOfSelectedUsers,
-  onChange,
-  onDelete,
-  onDuplicate,
-  isAllChecked,
-}: EditPanelProps) {
-  const actionsIcons = getActionsIcons(onDuplicate, onDelete);
+  const nbOfSelectedUsers = usersIdsSelected.length;
+  const areAllUSersChecked =
+    usersIdsSelected.length === users?.length && users?.length !== 0;
+
   return (
     <div data-testid="edit-panel" className="edit-panel">
       <div className="check-all">
-        <Checkbox onChange={onChange} checked={isAllChecked} />
+        <Checkbox
+          onChange={handleToggleAllUsers}
+          checked={areAllUSersChecked}
+        />
         <div className="selected-users-count">
           <span data-testid="count" className="count">
             {nbOfSelectedUsers}{" "}
@@ -32,7 +27,7 @@ function EditPanel({
           </span>
         </div>
       </div>
-      <EditOptions actionsIcons={actionsIcons} />
+      <EditOptions />
     </div>
   );
 }

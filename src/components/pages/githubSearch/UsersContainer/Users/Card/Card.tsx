@@ -1,8 +1,9 @@
-import { Id, User } from "../../../../../../types/users";
-import Button from "../../../../../reusable-ui/Button";
-import Checkbox from "../../../../../reusable-ui/Checkbox";
 import Avatar from "./Avatar";
+import Checkbox from "../../../../../reusable-ui/Checkbox";
 import ProfileInfos from "./ProfileInfos";
+import Button from "../../../../../reusable-ui/Button";
+
+import { Id, User } from "../../../../../../types/users";
 import "./card.css";
 
 interface CardProps {

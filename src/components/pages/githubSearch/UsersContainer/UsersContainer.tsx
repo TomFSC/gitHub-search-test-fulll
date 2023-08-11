@@ -1,33 +1,16 @@
-import { Id, User } from "../../../../types/users";
+import { useContext } from "react";
+import { SearchContext } from "../../../../context/SearchContext";
 import UnknownUsers from "./UnknownUsers/UnknownUsers";
 import Users from "./Users/Users";
+
 import "./usersContainer.css";
 
-interface UsersContainerProps {
-  isEditMode: boolean;
-  usersIdsSelected: Id[];
-  onCheckOneUser: (id: number | string) => void;
-  users: User[] | undefined;
-}
+function UsersContainer() {
+  const { users } = useContext(SearchContext);
 
-function UsersContainer({
-  usersIdsSelected,
-  onCheckOneUser,
-  users,
-  isEditMode,
-}: UsersContainerProps) {
   return (
     <div data-testid="users-container" className="users-container">
-      {users === undefined ? (
-        <UnknownUsers />
-      ) : (
-        <Users
-          users={users}
-          isEditMode={isEditMode}
-          onCheckOneUser={onCheckOneUser}
-          usersIdsSelected={usersIdsSelected}
-        />
-      )}
+      {users === undefined ? <UnknownUsers /> : <Users />}
     </div>
   );
 }

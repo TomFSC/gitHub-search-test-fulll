@@ -1,20 +1,13 @@
-import { Id, User } from "../../../../../types/users";
+import { useContext } from "react";
+import { SearchContext } from "../../../../../context/SearchContext";
 import Card from "./Card/Card";
+
 import "./users.css";
 
-interface UsersProps {
-  isEditMode: boolean;
-  usersIdsSelected: Id[];
-  onCheckOneUser: (id: Id) => void;
-  users: User[] | undefined;
-}
+function Users() {
+  const { users, usersIdsSelected, isEditMode, handleCheckOneUser } =
+    useContext(SearchContext);
 
-function Users({
-  usersIdsSelected,
-  onCheckOneUser,
-  users,
-  isEditMode,
-}: UsersProps) {
   return (
     <div data-testid="users" className="users">
       {users?.map((user, index) => (
@@ -23,7 +16,7 @@ function Users({
           key={index}
           isEditMode={isEditMode}
           user={user}
-          onChange={onCheckOneUser}
+          onChange={handleCheckOneUser}
           isChecked={usersIdsSelected.includes(user.id)}
         />
       ))}

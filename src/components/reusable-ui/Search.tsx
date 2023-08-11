@@ -1,5 +1,4 @@
 import { ChangeEventHandler } from "react";
-import "./search.css";
 
 interface SearchProps {
   onChange: ChangeEventHandler;

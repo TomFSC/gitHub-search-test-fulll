@@ -1,11 +1,13 @@
+import { useContext } from "react";
+import { SearchContext } from "../../../../../context/SearchContext";
 import Icon from "../../../../reusable-ui/Icon";
-import { ActionIcon } from "./actionsIconsConfig";
 
-interface EditOptionsProps {
-  actionsIcons: ActionIcon[];
-}
+import { getActionsIcons } from "./actionsIconsConfig";
 
-function EditOptions({ actionsIcons }: EditOptionsProps) {
+function EditOptions() {
+  const { handleDelete, handleDuplicate } = useContext(SearchContext);
+  const actionsIcons = getActionsIcons(handleDuplicate, handleDelete);
+
   return (
     <div data-testid="icons" className="actions">
       {actionsIcons.map(({ className, onClick }) => (
