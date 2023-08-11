@@ -7,6 +7,7 @@ export const useUsers = () => {
   const [error, setError] = useState<null | string>(null);
 
   const fetchUsers = async (param: string) => {
+    setError(null);
     if (param === "") {
       setUsers([]);
       return;
