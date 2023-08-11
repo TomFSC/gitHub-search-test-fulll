@@ -1,9 +1,9 @@
 import Header from "./Header/Header";
 import Actions from "./Actions/Actions";
 import UsersContainer from "./UsersContainer/UsersContainer";
+import ErrorPopup from "./ErrorPopup";
 
 import "./searchPage.css";
-import ErrorPopup from "./ErrorPopup";
 
 function SearchPage() {
   return (
