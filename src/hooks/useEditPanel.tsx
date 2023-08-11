@@ -17,10 +17,10 @@ export const useEditPanel = (users: User[]) => {
       setUsersIdsSelected([]);
       return;
     }
-    const test = users.map((user) => {
+    const usersIdsSelected = users.map((user) => {
       return user.id;
     });
-    setUsersIdsSelected(test);
+    setUsersIdsSelected(usersIdsSelected);
   };
 
   const handleCheckOneUser = (id: Id) => {
