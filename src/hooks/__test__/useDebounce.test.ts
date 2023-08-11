@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import useDebounce from "../useDebounce";
+import { useDebounce } from "../useDebounce";
 
 test("useDebounce with value", async () => {
   const value = "TomFSC";

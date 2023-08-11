@@ -1,8 +1,9 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
-import "./actions.css";
 import Search from "./Search/Search";
-import Editing from "./Editing/Editing";
+import EditPanel from "./EditPanel/EditPanel";
+
 import { Id, User } from "../../../../types/users";
+import "./actions.css";
 
 export interface ActionsProps {
   onCheckAll: ChangeEventHandler;
@@ -32,7 +33,7 @@ function Actions({
       <Search onChange={onChange} value={searchValue} />
 
       {isEditMode && (
-        <Editing
+        <EditPanel
           nbOfSelectedUsers={usersIdsSelected.length}
           onChange={onCheckAll}
           onDelete={onDelete}

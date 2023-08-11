@@ -1,25 +1,25 @@
 import { Id, User } from "../../../../types/users";
-import EmptyResult from "./EmptyResult/EmptyResult";
+import UnknownUsers from "./UnknownUsers/UnknownUsers";
 import Users from "./Users/Users";
-import "./searchResult.css";
+import "./usersContainer.css";
 
-interface SearchResultProps {
+interface UsersContainerProps {
   isEditMode: boolean;
   usersIdsSelected: Id[];
   onCheckOneUser: (id: number | string) => void;
   users: User[] | undefined;
 }
 
-function SearchResult({
+function UsersContainer({
   usersIdsSelected,
   onCheckOneUser,
   users,
   isEditMode,
-}: SearchResultProps) {
+}: UsersContainerProps) {
   return (
-    <div data-testid="result" className="search-result">
+    <div data-testid="users-container" className="users-container">
       {users === undefined ? (
-        <EmptyResult />
+        <UnknownUsers />
       ) : (
         <Users
           users={users}
@@ -32,4 +32,4 @@ function SearchResult({
   );
 }
 
-export default SearchResult;
+export default UsersContainer;

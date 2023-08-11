@@ -1,5 +1,5 @@
 import { Id, User } from "../../../../../types/users";
-import Card from "../Card/Card";
+import Card from "./Card/Card";
 import "./users.css";
 
 interface UsersProps {

@@ -1,10 +1,11 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
-import "./editing.css";
 import Checkbox from "../../../../reusable-ui/Checkbox";
-import { getActionsIcons } from "./actionsIconsConfig";
-import Icons from "./Icons";
+import EditOptions from "./EditOptions";
 
-interface EditingProps {
+import { getActionsIcons } from "./actionsIconsConfig";
+import "./editPanel.css";
+
+interface EditPanelProps {
   nbOfSelectedUsers: number;
   onChange: ChangeEventHandler;
   onDuplicate: MouseEventHandler;
@@ -12,16 +13,16 @@ interface EditingProps {
   isAllChecked: boolean;
 }
 
-function Editing({
+function EditPanel({
   nbOfSelectedUsers,
   onChange,
   onDelete,
   onDuplicate,
   isAllChecked,
-}: EditingProps) {
+}: EditPanelProps) {
   const actionsIcons = getActionsIcons(onDuplicate, onDelete);
   return (
-    <div data-testid="editing" className="editing">
+    <div data-testid="edit-panel" className="edit-panel">
       <div className="check-all">
         <Checkbox onChange={onChange} checked={isAllChecked} />
         <div className="selected-users-count">
@@ -31,9 +32,9 @@ function Editing({
           </span>
         </div>
       </div>
-      <Icons actionsIcons={actionsIcons} />
+      <EditOptions actionsIcons={actionsIcons} />
     </div>
   );
 }
 
-export default Editing;
+export default EditPanel;

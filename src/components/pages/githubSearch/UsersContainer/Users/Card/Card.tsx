@@ -1,6 +1,6 @@
-import { Id, User } from "../../../../../types/users";
-import Button from "../../../../reusable-ui/Button";
-import Checkbox from "../../../../reusable-ui/Checkbox";
+import { Id, User } from "../../../../../../types/users";
+import Button from "../../../../../reusable-ui/Button";
+import Checkbox from "../../../../../reusable-ui/Checkbox";
 import Avatar from "./Avatar";
 import ProfileInfos from "./ProfileInfos";
 import "./card.css";

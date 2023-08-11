@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SearchResult from "../SearchResult";
+import UsersContainer from "../UsersContainer";
 
 const mockUsers = [
   {
@@ -28,9 +28,9 @@ const mockUsers = [
 describe("SearchResult component", () => {
   test("Render with unknown user", () => {
     render(
-      <SearchResult
-        usersSelected={[]}
-        onCheckOne={() => {}}
+      <UsersContainer
+        usersIdsSelected={[]}
+        onCheckOneUser={() => {}}
         users={undefined}
         isEditMode={false}
       />

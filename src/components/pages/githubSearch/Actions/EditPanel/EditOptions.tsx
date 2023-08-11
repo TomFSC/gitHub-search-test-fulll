@@ -1,10 +1,10 @@
 import { ActionIcon } from "./actionsIconsConfig";
 
-interface IconsProps {
+interface EditOptionsProps {
   actionsIcons: ActionIcon[];
 }
 
-function Icons({ actionsIcons }: IconsProps) {
+function EditOptions({ actionsIcons }: EditOptionsProps) {
   return (
     <div data-testid="icons" className="actions">
       {actionsIcons.map(({ className, onClick }) => (
@@ -16,4 +16,4 @@ function Icons({ actionsIcons }: IconsProps) {
   );
 }
 
-export default Icons;
+export default EditOptions;

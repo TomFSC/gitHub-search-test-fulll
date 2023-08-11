@@ -1,4 +1,4 @@
-import { User } from "../../../../../types/users";
+import { User } from "../../../../../../types/users";
 
 type AvatarProps = Pick<User, "avatar_url">;
 

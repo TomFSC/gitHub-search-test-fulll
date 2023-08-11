@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import Header from "./Header/Header";
-import "./searchPage.css";
-import useDebounce from "../../../hooks/useDebounce";
 import Actions from "./Actions/Actions";
-import SearchResult from "./SearchResult/SearchResult";
+import UsersContainer from "./UsersContainer/UsersContainer";
 import { useUsers } from "../../../hooks/useUsers";
 import { useEditPanel } from "../../../hooks/useEditPanel";
 import { useSearch } from "../../../hooks/useSearch";
-
+import { useDebounce } from "../../../hooks/useDebounce";
 import { useActions } from "../../../hooks/useActions";
+
 import { User } from "../../../types/users";
+import "./searchPage.css";
 
 function SearchPage() {
   const { search, handleSearch } = useSearch();
@@ -42,7 +42,7 @@ function SearchPage() {
           <h1 style={{ color: "red", fontSize: 25 }}>{error}</h1>
         </div>
       ) : (
-        <SearchResult
+        <UsersContainer
           usersIdsSelected={usersIdsSelected}
           onCheckOneUser={handleCheckOneUser}
           users={users}

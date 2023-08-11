@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Editing from "../Editing";
+import Editing from "../EditPanel";
 
 describe("Editing component", () => {
   test("Render Editing", () => {
