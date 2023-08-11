@@ -1,3 +1,4 @@
+import Icon from "../../../../reusable-ui/Icon";
 import { ActionIcon } from "./actionsIconsConfig";
 
 interface EditOptionsProps {
@@ -8,9 +9,7 @@ function EditOptions({ actionsIcons }: EditOptionsProps) {
   return (
     <div data-testid="icons" className="actions">
       {actionsIcons.map(({ className, onClick }) => (
-        <span key={className} onClick={onClick}>
-          <i className={className}></i>
-        </span>
+        <Icon key={className} className={className} onClick={onClick} />
       ))}
     </div>
   );
