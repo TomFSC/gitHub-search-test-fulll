@@ -7,13 +7,16 @@ import "./header.css";
 
 function Header() {
   const { isEditMode, handleEditMode } = useContext(SearchContext);
+  const buttonIconClassName = isEditMode
+    ? "fa-solid fa-right-from-bracket"
+    : "fa-solid fa-user-pen";
 
   return (
     <div data-testid="header" className="header">
       <Title label="GitHub Search" />
       <Button
         className={isEditMode ? "header-btn active" : "header-btn"}
-        label="Edit Mode"
+        label={<i className={buttonIconClassName}></i>}
         onClick={handleEditMode}
       />
     </div>

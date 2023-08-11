@@ -1,8 +1,7 @@
 import { MouseEventHandler } from "react";
-
 interface ButtonProps {
   className: string;
-  label: string;
+  label: string | JSX.Element;
   onClick?: MouseEventHandler;
 }
 
