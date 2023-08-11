@@ -5,14 +5,14 @@ import "./searchResult.css";
 
 interface SearchResultProps {
   isEditMode: boolean;
-  usersSelected: Id[];
-  onCheckOne: (id: number | string) => void;
+  usersIdsSelected: Id[];
+  onCheckOneUser: (id: number | string) => void;
   users: User[] | undefined;
 }
 
 function SearchResult({
-  usersSelected,
-  onCheckOne,
+  usersIdsSelected,
+  onCheckOneUser,
   users,
   isEditMode,
 }: SearchResultProps) {
@@ -24,8 +24,8 @@ function SearchResult({
         <Users
           users={users}
           isEditMode={isEditMode}
-          onChange={onCheckOne}
-          usersSelected={usersSelected}
+          onCheckOneUser={onCheckOneUser}
+          usersIdsSelected={usersIdsSelected}
         />
       )}
     </div>

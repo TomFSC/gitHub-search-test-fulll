@@ -4,13 +4,17 @@ import "./users.css";
 
 interface UsersProps {
   isEditMode: boolean;
-  usersSelected: Id[];
-  onChange: (id: Id) => void;
+  usersIdsSelected: Id[];
+  onCheckOneUser: (id: Id) => void;
   users: User[] | undefined;
 }
 
-function Users({ usersSelected, onChange, users, isEditMode }: UsersProps) {
-  //Créer la variable pour remplacer isAllChecked
+function Users({
+  usersIdsSelected,
+  onCheckOneUser,
+  users,
+  isEditMode,
+}: UsersProps) {
   return (
     <div data-testid="users" className="users">
       {users?.map((user, index) => (
@@ -19,8 +23,8 @@ function Users({ usersSelected, onChange, users, isEditMode }: UsersProps) {
           key={index}
           isEditMode={isEditMode}
           user={user}
-          onChange={onChange}
-          isChecked={usersSelected.includes(user.id)}
+          onChange={onCheckOneUser}
+          isChecked={usersIdsSelected.includes(user.id)}
         />
       ))}
     </div>

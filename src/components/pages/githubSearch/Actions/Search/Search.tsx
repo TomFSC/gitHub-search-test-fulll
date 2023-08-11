@@ -2,18 +2,18 @@ import { ChangeEventHandler } from "react";
 import "./search.css";
 
 interface SearchProps {
-  handleChange: ChangeEventHandler;
+  onChange: ChangeEventHandler;
   value: string;
 }
 
-function Search({ handleChange, value }: SearchProps) {
+function Search({ onChange, value }: SearchProps) {
   return (
     <div data-testid="search-input" className="search-input">
       <input
         className="input-text"
         type="text"
         placeholder="Search for user"
-        onChange={handleChange}
+        onChange={onChange}
         value={value}
       />
     </div>
