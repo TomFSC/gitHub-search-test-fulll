@@ -1,7 +1,7 @@
 import { Id, User } from "../../../../../types/users";
+import Button from "../../../../reusable-ui/Button";
 import Checkbox from "../../../../reusable-ui/Checkbox";
 import Avatar from "./Avatar";
-import CardBtn from "./CardBtn";
 import ProfileInfos from "./ProfileInfos";
 import "./card.css";
 
@@ -26,7 +26,7 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
       )}
       <Avatar avatar_url={avatar_url} />
       <ProfileInfos id={id} login={login} />
-      <CardBtn className="card-btn" label="View profile" />
+      <Button className="card-btn" label="View profile" />
     </div>
   );
 }

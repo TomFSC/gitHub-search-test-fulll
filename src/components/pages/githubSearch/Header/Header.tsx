@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import HeaderBtn from "./HeaderBtn";
+import Button from "../../../reusable-ui/Button";
 import "./header.css";
 
 interface HeaderProps {
@@ -11,7 +11,7 @@ function Header({ isEditMode, onClick }: HeaderProps) {
   return (
     <div data-testid="header" className="header">
       <h1>GitHub Search</h1>
-      <HeaderBtn
+      <Button
         className={isEditMode ? "header-btn active" : "header-btn"}
         label="Edit Mode"
         onClick={onClick}

@@ -1,12 +1,12 @@
 import { MouseEventHandler } from "react";
 
-interface HeaderBtnProps {
+interface ButtonProps {
   className: string;
   label: string;
-  onClick: MouseEventHandler;
+  onClick?: MouseEventHandler;
 }
 
-function HeaderBtn({ className, label, onClick }: HeaderBtnProps) {
+function Button({ className, label, onClick }: ButtonProps) {
   return (
     <button className={className} onClick={onClick}>
       {label}
@@ -14,4 +14,4 @@ function HeaderBtn({ className, label, onClick }: HeaderBtnProps) {
   );
 }
 
-export default HeaderBtn;
+export default Button;

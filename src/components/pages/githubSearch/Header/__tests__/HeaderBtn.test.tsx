@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import HeaderBtn from "../HeaderBtn";
+import HeaderBtn from "../../../../reusable-ui/Button";
 
 describe("HeaderBtn component", () => {
   test("header button on normal mode", async () => {
