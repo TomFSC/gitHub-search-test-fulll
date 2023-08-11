@@ -1,20 +1,20 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { SearchContext } from "../../../context/SearchContext";
 import Header from "./Header/Header";
 import Actions from "./Actions/Actions";
 import UsersContainer from "./UsersContainer/UsersContainer";
 import { useUsers } from "../../../hooks/useUsers";
 import { useEditPanel } from "../../../hooks/useEditPanel";
 import { useSearch } from "../../../hooks/useSearch";
-import { useDebounce } from "../../../hooks/useDebounce";
 import { useActions } from "../../../hooks/useActions";
 
 import { User } from "../../../types/users";
 import "./searchPage.css";
 
 function SearchPage() {
+  const { debouncedValue, fetchUsers } = useContext(SearchContext);
   const { search, handleSearch } = useSearch();
-  const debouncedValue = useDebounce(search);
-  const { users, error, fetchUsers } = useUsers();
+  const { users, error } = useUsers();
   const { isEditMode, handleEditMode } = useEditPanel(users as User[]);
   const { usersIdsSelected, handleToggleAllUsers, handleCheckOneUser } =
     useEditPanel(users as User[]);
