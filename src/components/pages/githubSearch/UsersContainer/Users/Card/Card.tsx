@@ -22,7 +22,7 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
       {isEditMode && (
         <Checkbox
           className={ClassNames.CARD_CHECKBOX}
-          onChange={() => onChange(id)}
+          onChange={() => onChange(id as Id)}
           checked={isChecked}
         />
       )}

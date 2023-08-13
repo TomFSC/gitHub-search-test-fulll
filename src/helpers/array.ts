@@ -21,3 +21,7 @@ export const removeByIds = (array1: User[], array2: Id[]) => {
 export const isEmptyArray = (array: any[]) => {
   return array.length === 0;
 };
+
+export const isIncludesInArray = (array: Id[], id: Id) => {
+  return array.includes(id);
+};
