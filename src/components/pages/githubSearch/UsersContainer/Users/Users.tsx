@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { SearchContext } from "../../../../../context/SearchContext";
 import Card from "./Card/Card";
 
+import { ClassNames } from "../../../../../ts/constants";
 import "./users.css";
 
 function Users() {
@@ -9,10 +10,9 @@ function Users() {
     useContext(SearchContext);
 
   return (
-    <div data-testid="users" className="users">
+    <div className={ClassNames.USERS}>
       {users?.map((user, index) => (
         <Card
-          data-testid="card"
           key={index}
           isEditMode={isEditMode}
           user={user}
