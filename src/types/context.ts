@@ -7,9 +7,9 @@ export interface SearchContextValue {
   isEditMode: boolean;
   handleEditMode: MouseEventHandler;
   searchValue: string;
-  handleSearch: ChangeEventHandler;
+  handleChange: ChangeEventHandler;
   usersIdsSelected: Id[];
-  handleToggleAllUsers: ChangeEventHandler;
+  handleToggleAllUsers: Function;
   handleCheckOneUser: (id: Id) => void;
   handleDelete: MouseEventHandler;
   handleDuplicate: MouseEventHandler;

@@ -7,14 +7,14 @@ import { ClassNames, USER_SEARCH_PLACEHOLDER } from "../../../../ts/constants";
 import "./actions.css";
 
 function Actions() {
-  const { isEditMode, searchValue, handleSearch } = useContext(SearchContext);
+  const { isEditMode, searchValue, handleChange } = useContext(SearchContext);
 
   return (
     <section>
       <Search
         className={ClassNames.SEARCH_CONTAINER}
         placeholder={USER_SEARCH_PLACEHOLDER}
-        onChange={handleSearch}
+        onChange={handleChange}
         value={searchValue}
       />
       {isEditMode && <EditPanel />}
