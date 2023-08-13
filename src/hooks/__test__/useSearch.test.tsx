@@ -3,21 +3,52 @@ import { useSearch } from "../useSearch";
 import { ChangeEvent } from "react";
 
 describe("useSearch", () => {
-  test("Render initial searchValue", () => {
+  test("Should return initial searchValue on first render", () => {
     const { result } = renderHook(useSearch);
-    expect(result.current.searchValue).toBe("");
-    expect(result.current.handleSearch).toBeInstanceOf(Function);
+    const initialSearchValue = "";
+    const searchValue = result.current.searchValue;
+
+    expect(searchValue).toBe(initialSearchValue);
   });
-  test("Should update searchValue", () => {
+
+  test("Should update searchValue when user enters value on input", () => {
     const { result } = renderHook(useSearch);
+    const userSearchValueEntered = "TomFSC";
 
     act(() =>
-      result.current.handleSearch({
+      result.current.handleChange({
         target: {
-          value: "TomFSC",
+          value: userSearchValueEntered,
         },
       } as ChangeEvent<HTMLInputElement>)
     );
-    expect(result.current.searchValue).toBe("TomFSC");
+
+    const searchValue = result.current.searchValue;
+
+    expect(searchValue).toBe(userSearchValueEntered);
+  });
+
+  test("Should clear searchValue when user clicks on cancel icon", () => {
+    const { result } = renderHook(useSearch);
+    const initialSearchValue = "";
+    const userSearchValueEntered = "TomFSC";
+
+    act(() =>
+      result.current.handleChange({
+        target: {
+          value: userSearchValueEntered,
+        },
+      } as ChangeEvent<HTMLInputElement>)
+    );
+
+    const searchValue = result.current.searchValue;
+
+    expect(searchValue).toBe(userSearchValueEntered);
+
+    act(() => result.current.handleClearSearchValue());
+
+    const searchValueAfterUserClicks = result.current.searchValue;
+
+    expect(searchValueAfterUserClicks).toBe(initialSearchValue);
   });
 });
