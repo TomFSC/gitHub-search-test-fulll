@@ -3,6 +3,7 @@ import Checkbox from "../../../../../reusable-ui/Checkbox";
 import ProfileInfos from "./ProfileInfos";
 import Button from "../../../../../reusable-ui/Button";
 
+import { ClassNames, Labels } from "../../../../../../ts/constants";
 import { Id, User } from "../../../../../../types/users";
 import "./card.css";
 
@@ -17,17 +18,17 @@ function Card({ user, onChange, isChecked, isEditMode }: CardProps) {
   const { login, avatar_url, id } = user;
 
   return (
-    <div className="card-container">
+    <div className={ClassNames.CARD_CONTAINER}>
       {isEditMode && (
         <Checkbox
-          className="card-checkbox"
+          className={ClassNames.CARD_CHECKBOX}
           onChange={() => onChange(id)}
           checked={isChecked}
         />
       )}
       <Avatar avatar_url={avatar_url} />
       <ProfileInfos id={id} login={login} />
-      <Button className="card-btn" label="View profile" />
+      <Button className={ClassNames.CARD_BUTTON} label={Labels.CARD_BUTTON} />
     </div>
   );
 }

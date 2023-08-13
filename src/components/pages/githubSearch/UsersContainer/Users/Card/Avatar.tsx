@@ -1,11 +1,16 @@
 import { User } from "../../../../../../types/users";
+import {
+  ClassNames,
+  PROFILE_AVATAR_ALT,
+  UserKeys,
+} from "../../../../../../ts/constants";
 
-type AvatarProps = Pick<User, "avatar_url">;
+type AvatarProps = Pick<User, typeof UserKeys.AVATAR_URL>;
 
 function Avatar({ avatar_url }: AvatarProps) {
   return (
-    <div className="avatar">
-      <img src={avatar_url} alt="profile-avatar" />
+    <div className={ClassNames.AVATAR}>
+      <img src={avatar_url} alt={PROFILE_AVATAR_ALT} />
     </div>
   );
 }
