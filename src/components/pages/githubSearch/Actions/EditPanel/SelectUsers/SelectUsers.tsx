@@ -6,7 +6,7 @@ import SelectedUsersCount from "./SelectedUsersCount";
 import { ClassNames } from "../../../../../../ts/constants";
 
 function SelectUsers() {
-  const { users, usersIdsSelected, handleToggleAllUsers } =
+  const { isEditMode, users, usersIdsSelected, handleToggleAllUsers } =
     useContext(SearchContext);
 
   const areAllUSersChecked =
@@ -15,7 +15,7 @@ function SelectUsers() {
   return (
     <div className={ClassNames.SELECT_USERS}>
       <Checkbox
-        onChange={() => handleToggleAllUsers(users)}
+        onChange={() => handleToggleAllUsers(isEditMode, users)}
         checked={areAllUSersChecked}
       />
       <SelectedUsersCount />
