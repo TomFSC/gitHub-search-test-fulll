@@ -3,17 +3,16 @@ import { Id, User } from "../types/users";
 import { removeById } from "../helpers/array";
 import { EditMode } from "../ts/constants";
 
-export const useEditPanel = (users: User[]) => {
+export const useEditPanel = () => {
   const [isEditMode, setIsEditMode] = useState<boolean>(EditMode.OFF);
   const [usersIdsSelected, setUsersIdsSelected] = useState<Id[]>([]);
   const handleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
 
-  const areAllUSersChecked =
-    usersIdsSelected.length === users?.length && users?.length !== 0;
-
-  const handleToggleAllUsers = () => {
+  const handleToggleAllUsers = (users: User[]) => {
+    const areAllUSersChecked =
+      usersIdsSelected.length === users?.length && users?.length !== 0;
     if (isEditMode === false) return;
     if (areAllUSersChecked) {
       setUsersIdsSelected([]);

@@ -4,7 +4,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import { useUsers } from "../hooks/useUsers";
 import { useEditPanel } from "../hooks/useEditPanel";
 
-import { Id, User } from "../types/users";
+import { Id } from "../types/users";
 import { SearchContextValue } from "../types/context";
 import { removeByIds, findObjectById } from "../helpers/array";
 
@@ -34,7 +34,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
     setUsersIdsSelected,
     handleToggleAllUsers,
     handleCheckOneUser,
-  } = useEditPanel(users as User[]);
+  } = useEditPanel();
 
   useEffect(() => {
     fetchUsers(debouncedValue);

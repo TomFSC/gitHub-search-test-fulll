@@ -14,7 +14,10 @@ function SelectUsers() {
 
   return (
     <div className={ClassNames.SELECT_USERS}>
-      <Checkbox onChange={handleToggleAllUsers} checked={areAllUSersChecked} />
+      <Checkbox
+        onChange={() => handleToggleAllUsers(users)}
+        checked={areAllUSersChecked}
+      />
       <SelectedUsersCount />
     </div>
   );
