@@ -4,13 +4,13 @@ interface SearchProps {
   onChange: ChangeEventHandler;
   value: string;
   placeholder: string;
+  className: string;
 }
 
-function Search({ onChange, value, placeholder }: SearchProps) {
+function Search({ onChange, value, placeholder, className }: SearchProps) {
   return (
-    <div data-testid="search-input" className="search-input">
+    <div className={className}>
       <input
-        className="input-text"
         type="text"
         placeholder={placeholder}
         onChange={onChange}

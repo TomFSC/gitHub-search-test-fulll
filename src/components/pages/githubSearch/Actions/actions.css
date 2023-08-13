@@ -4,44 +4,44 @@ section {
   flex-direction: column;
 }
 
-.search-input {
+.search-container {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 15px 0;
-}
-.input-text {
-  width: 30%;
-  height: 40px;
-  border: none;
-  border-radius: 5px;
-  background-color: #d5d5d5;
-  text-align: center;
-  font-size: 12px;
-  font-weight: bold;
+  > input {
+    width: 30%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d5d5d5;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
 
-  &::-webkit-input-placeholder {
-    color: black;
-    opacity: 0.5;
-  }
+    &::-webkit-input-placeholder {
+      color: black;
+      opacity: 0.5;
+    }
 
-  &::-moz-placeholder {
-    color: black;
-    opacity: 0.5;
-  }
+    &::-moz-placeholder {
+      color: black;
+      opacity: 0.5;
+    }
 
-  &:-ms-input-placeholder {
-    color: black;
-    opacity: 0.5;
-  }
+    &:-ms-input-placeholder {
+      color: black;
+      opacity: 0.5;
+    }
 
-  &::-ms-input-placeholder {
-    color: black;
-    opacity: 0.5;
-  }
+    &::-ms-input-placeholder {
+      color: black;
+      opacity: 0.5;
+    }
 
-  &::placeholder {
-    color: black;
-    opacity: 0.5;
+    &::placeholder {
+      color: black;
+      opacity: 0.5;
+    }
   }
 }

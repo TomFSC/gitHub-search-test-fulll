@@ -3,7 +3,7 @@ import { SearchContext } from "../../../../context/SearchContext";
 import Search from "../../../reusable-ui/Search";
 import EditPanel from "./EditPanel/EditPanel";
 
-import { USER_SEARCH_PLACEHOLDER } from "../../../../ts/constants";
+import { ClassNames, USER_SEARCH_PLACEHOLDER } from "../../../../ts/constants";
 import "./actions.css";
 
 function Actions() {
@@ -12,6 +12,7 @@ function Actions() {
   return (
     <section>
       <Search
+        className={ClassNames.SEARCH_CONTAINER}
         placeholder={USER_SEARCH_PLACEHOLDER}
         onChange={handleSearch}
         value={searchValue}

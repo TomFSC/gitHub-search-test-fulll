@@ -1,11 +1,12 @@
+import { ClassNames } from "../../../../../ts/constants";
 import EditOptions from "./EditOptions";
 
-import "./editPanel.css";
 import SelectUsers from "./SelectUsers/SelectUsers";
+import "./editPanel.css";
 
 function EditPanel() {
   return (
-    <div data-testid="edit-panel" className="edit-panel">
+    <div className={ClassNames.EDIT_PANEL}>
       <SelectUsers />
       <EditOptions />
     </div>

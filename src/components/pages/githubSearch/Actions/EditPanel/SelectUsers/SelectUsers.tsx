@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+import { SearchContext } from "../../../../../../context/SearchContext";
 import Checkbox from "../../../../../reusable-ui/Checkbox";
 import SelectedUsersCount from "./SelectedUsersCount";
-import { SearchContext } from "../../../../../../context/SearchContext";
+
+import { ClassNames } from "../../../../../../ts/constants";
 
 function SelectUsers() {
   const { users, usersIdsSelected, handleToggleAllUsers } =
@@ -11,7 +13,7 @@ function SelectUsers() {
     usersIdsSelected.length === users?.length && users?.length !== 0;
 
   return (
-    <div className="check-all">
+    <div className={ClassNames.SELECT_USERS}>
       <Checkbox onChange={handleToggleAllUsers} checked={areAllUSersChecked} />
       <SelectedUsersCount />
     </div>
