@@ -16,7 +16,8 @@ function Header() {
       <Title label="GitHub Search" />
       <Button
         className={isEditMode ? "header-btn active" : "header-btn"}
-        label={<i className={buttonIconClassName}></i>}
+        label={"Edit Mode"}
+        Icon={<i className={buttonIconClassName}></i>}
         onClick={handleEditMode}
       />
     </div>
