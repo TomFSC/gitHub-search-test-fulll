@@ -3,13 +3,14 @@ import { SearchContext } from "../../../../context/SearchContext";
 import EmptyUsers from "./EmptyUsers/EmptyUsers";
 import Users from "./Users/Users";
 
+import { ClassNames } from "../../../../ts/constants";
 import "./usersContainer.css";
 
 function UsersContainer() {
   const { users } = useContext(SearchContext);
 
   return (
-    <div data-testid="users-container" className="users-container">
+    <div className={ClassNames.USERS_CONTAINER}>
       {users === undefined ? <EmptyUsers /> : <Users />}
     </div>
   );
