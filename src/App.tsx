@@ -3,11 +3,9 @@ import { SearchContextProvider } from "./context/SearchContext";
 
 function App() {
   return (
-    <div data-testid="app" className="App">
-      <SearchContextProvider>
-        <SearchPage />
-      </SearchContextProvider>
-    </div>
+    <SearchContextProvider>
+      <SearchPage />
+    </SearchContextProvider>
   );
 }
 
