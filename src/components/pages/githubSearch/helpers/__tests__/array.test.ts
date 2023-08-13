@@ -1,5 +1,5 @@
 import { fakeProfiles } from "../../../../../fakeProfile/fakeProfiles";
-import { differenceBetweenArrays, filterById, findObjectById } from "../array";
+import { filterByArrayValues, filterById, findObjectById } from "../array";
 
 test("findObjectById", () => {
   const id = 748;
@@ -13,9 +13,9 @@ test("filterById", () => {
   expect(filterById(ids, id)).toStrictEqual([1, 258, 300]);
 });
 
-test("differenceBetweenArrays", () => {
+test("filterByArrayValues", () => {
   const ids = [748];
-  expect(differenceBetweenArrays(fakeProfiles, ids)).toStrictEqual([
+  expect(filterByArrayValues(fakeProfiles, ids)).toStrictEqual([
     fakeProfiles[1],
   ]);
 });

@@ -10,7 +10,7 @@ export const filterById = (array: Id[], id: Id) => {
   return newArray;
 };
 
-export const differenceBetweenArrays = (array1: User[], array2: Id[]) => {
+export const filterByArrayValues = (array1: User[], array2: Id[]) => {
   return array1.filter((item1) => {
     return !array2.some((item2) => {
       return item1.id === item2;
