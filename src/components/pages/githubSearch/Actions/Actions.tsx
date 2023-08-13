@@ -10,7 +10,11 @@ function Actions() {
 
   return (
     <div data-testid="actions-section" className="actions-section">
-      <Search onChange={handleSearch} value={searchValue} />
+      <Search
+        placeholder={"Search for user"}
+        onChange={handleSearch}
+        value={searchValue}
+      />
       {isEditMode && <EditPanel />}
     </div>
   );
