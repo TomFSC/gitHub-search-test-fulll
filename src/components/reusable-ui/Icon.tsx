@@ -7,7 +7,7 @@ interface IconsProps {
 
 function Icon({ className, onClick }: IconsProps) {
   return (
-    <span key={className} onClick={onClick}>
+    <span onClick={onClick}>
       <i className={className}></i>
     </span>
   );
