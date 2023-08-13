@@ -12,7 +12,7 @@ import {
 import "./header.css";
 
 function Header() {
-  const { isEditMode, handleEditMode } = useContext(SearchContext);
+  const { isEditMode, handleToggleEditMode } = useContext(SearchContext);
 
   const buttonIconClassName = isEditMode
     ? Icons.SOLID_RIGHT_FROM_BRACKET
@@ -30,7 +30,7 @@ function Header() {
         }
         label={Labels.HEADER_BUTTON}
         Icon={icon}
-        onClick={handleEditMode}
+        onClick={handleToggleEditMode}
       />
     </header>
   );

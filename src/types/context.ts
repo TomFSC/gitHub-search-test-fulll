@@ -5,7 +5,7 @@ export interface SearchContextValue {
   debouncedValue: string;
   users: User[] | null | [];
   isEditMode: boolean;
-  handleEditMode: MouseEventHandler;
+  handleToggleEditMode: MouseEventHandler;
   searchValue: string;
   handleChange: ChangeEventHandler;
   handleClearSearchValue: MouseEventHandler;

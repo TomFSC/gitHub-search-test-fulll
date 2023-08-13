@@ -12,7 +12,7 @@ export const SearchContext = createContext<SearchContextValue>({
   debouncedValue: "",
   users: [],
   isEditMode: false,
-  handleEditMode: () => {},
+  handleToggleEditMode: () => {},
   searchValue: "",
   handleChange: () => {},
   handleClearSearchValue: () => {},
@@ -34,7 +34,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
     handleToggleAllUsers,
     handleCheckOneUser,
   } = useSelectedUsers();
-  const { isEditMode, handleEditMode } = useEditPanel();
+  const { isEditMode, handleToggleEditMode } = useEditPanel();
   const { users, setUsers, handleDeleteUsers, handleDuplicateUsers } = useUsers(
     usersIdsSelected,
     setSearchValue,
@@ -52,7 +52,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
         debouncedValue,
         users,
         isEditMode,
-        handleEditMode,
+        handleToggleEditMode,
         searchValue,
         handleChange,
         handleClearSearchValue,

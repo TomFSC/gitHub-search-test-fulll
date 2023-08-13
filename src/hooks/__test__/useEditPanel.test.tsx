@@ -1,70 +1,30 @@
 import { act, renderHook } from "@testing-library/react";
 import { useEditPanel } from "../useEditPanel";
-import { fakeProfiles } from "../../fakeProfile/fakeProfiles";
+import { EditMode } from "../../ts/constants";
 
 describe("useEditPanel", () => {
-  test("Should render initial state", () => {
-    const { result } = renderHook(({ users }) => useEditPanel(users), {
-      initialProps: { users: [] },
-    });
+  test("Should not display EditPanel by default", () => {
+    //arrange
+    const { result } = renderHook(useEditPanel);
+    const isEditModeInitial = result.current.isEditMode;
 
-    expect(result.current.isEditMode).toBe(false);
-    expect(result.current.usersIdsSelected).toEqual([]);
+    //act
+
+    //assert
+    expect(isEditModeInitial).toBe(EditMode.OFF);
   });
 
-  test("Should update isEditMode on handleEditMode", () => {
-    const { result } = renderHook(({ users }) => useEditPanel(users), {
-      initialProps: { users: [] },
-    });
+  test("Should display EditPanel when user enters in edit mode", () => {
+    //arrange
+    const { result } = renderHook(useEditPanel);
 
+    //act
     act(() => {
-      result.current.handleEditMode();
+      result.current.handleToggleEditMode();
     });
 
-    expect(result.current.isEditMode).toBe(true);
-  });
-
-  test("Should update usersIdsSelected on handleToggleAllUsers", () => {
-    const mockUsers = fakeProfiles;
-    const mockIds = [748, 1];
-    const { result } = renderHook(({ users }) => useEditPanel(users), {
-      initialProps: { users: mockUsers },
-    });
-
-    act(() => {
-      result.current.handleToggleAllUsers();
-    });
-    expect(result.current.usersIdsSelected).toEqual(mockIds);
-
-    act(() => {
-      result.current.handleToggleAllUsers();
-    });
-    expect(result.current.usersIdsSelected).toEqual([]);
-  });
-
-  test("Should update usersIdsSelected on handleCheckOneUser", () => {
-    const mockUsers = fakeProfiles;
-    const mockUserId1 = mockUsers[0].id;
-    const mockUserId2 = mockUsers[1].id;
-    const mockOneId = [748];
-    const mockIds = [748, 1];
-    const { result } = renderHook(({ users }) => useEditPanel(users), {
-      initialProps: { users: mockUsers },
-    });
-
-    act(() => {
-      result.current.handleCheckOneUser(mockUserId1);
-    });
-    expect(result.current.usersIdsSelected).toEqual(mockOneId);
-
-    act(() => {
-      result.current.handleCheckOneUser(mockUserId2);
-    });
-    expect(result.current.usersIdsSelected).toEqual(mockIds);
-
-    act(() => {
-      result.current.handleCheckOneUser(mockUserId2);
-    });
-    expect(result.current.usersIdsSelected).toEqual(mockOneId);
+    //assert
+    const isEditModeAfterToggled = result.current.isEditMode;
+    expect(isEditModeAfterToggled).toBe(EditMode.ON);
   });
 });

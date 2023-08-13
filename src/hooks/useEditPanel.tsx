@@ -5,13 +5,13 @@ import { EditMode } from "../ts/constants";
 export const useEditPanel = () => {
   const [isEditMode, setIsEditMode] = useState<boolean>(EditMode.OFF);
 
-  const handleEditMode = () => {
+  const handleToggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
 
   return {
     isEditMode,
     setIsEditMode,
-    handleEditMode,
+    handleToggleEditMode,
   };
 };
