@@ -40,7 +40,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
     setSearchValue,
     setUsersIdsSelected
   );
-  const { error, fetchUsers } = useFetchUsers(setUsers);
+  const { error, fetchUsers } = useFetchUsers(setUsers, setUsersIdsSelected);
 
   useEffect(() => {
     fetchUsers(debouncedValue);
