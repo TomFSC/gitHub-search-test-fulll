@@ -3,24 +3,36 @@ import { SearchContext } from "../../../../context/SearchContext";
 import Title from "../../../reusable-ui/Title";
 import Button from "../../../reusable-ui/Button";
 
+import {
+  Icons,
+  HEADER_TITLE,
+  Labels,
+  ClassNames,
+} from "../../../../ts/constants";
 import "./header.css";
 
 function Header() {
   const { isEditMode, handleEditMode } = useContext(SearchContext);
+
   const buttonIconClassName = isEditMode
-    ? "fa-solid fa-right-from-bracket"
-    : "fa-solid fa-user-pen";
+    ? Icons.SOLID_RIGHT_FROM_BRACKET
+    : Icons.SOLID_USER_PEN;
+  const icon = <i className={buttonIconClassName}></i>;
 
   return (
-    <div data-testid="header" className="header">
-      <Title label="GitHub Search" />
+    <header>
+      <Title label={HEADER_TITLE} />
       <Button
-        className={isEditMode ? "header-btn active" : "header-btn"}
-        label={"Edit Mode"}
-        Icon={<i className={buttonIconClassName}></i>}
+        className={
+          isEditMode
+            ? ClassNames.HEADER_BUTTON_ACTIVE
+            : ClassNames.HEADER_BUTTON
+        }
+        label={Labels.HEADER_BUTTON}
+        Icon={icon}
         onClick={handleEditMode}
       />
-    </div>
+    </header>
   );
 }
 
