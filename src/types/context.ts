@@ -11,7 +11,7 @@ export interface SearchContextValue {
   usersIdsSelected: Id[];
   handleToggleAllUsers: Function;
   handleCheckOneUser: (id: Id) => void;
-  handleDelete: MouseEventHandler;
-  handleDuplicate: MouseEventHandler;
+  handleDeleteUsers: MouseEventHandler;
+  handleDuplicateUsers: MouseEventHandler;
   error: string | null;
 }

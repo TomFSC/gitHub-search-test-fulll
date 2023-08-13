@@ -6,8 +6,11 @@ import { ClassNames } from "../../../../../ts/constants";
 import { getOptionsIcons } from "./optionsIconsConfig";
 
 function EditOptions() {
-  const { handleDelete, handleDuplicate } = useContext(SearchContext);
-  const editOptionsIcons = getOptionsIcons(handleDuplicate, handleDelete);
+  const { handleDeleteUsers, handleDuplicateUsers } = useContext(SearchContext);
+  const editOptionsIcons = getOptionsIcons(
+    handleDuplicateUsers,
+    handleDeleteUsers
+  );
 
   return (
     <div className={ClassNames.EDIT_OPTIONS}>

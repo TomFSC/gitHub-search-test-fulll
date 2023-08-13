@@ -4,9 +4,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import { useUsers } from "../hooks/useUsers";
 import { useEditPanel } from "../hooks/useEditPanel";
 
-import { Id } from "../types/users";
 import { SearchContextValue } from "../types/context";
-import { removeByIds, findObjectById } from "../helpers/array";
 
 export const SearchContext = createContext<SearchContextValue>({
   debouncedValue: "",
@@ -18,15 +16,14 @@ export const SearchContext = createContext<SearchContextValue>({
   usersIdsSelected: [],
   handleToggleAllUsers: () => {},
   handleCheckOneUser: () => {},
-  handleDelete: () => {},
-  handleDuplicate: () => {},
+  handleDeleteUsers: () => {},
+  handleDuplicateUsers: () => {},
   error: null,
 });
 
 export function SearchContextProvider(props: PropsWithChildren) {
   const { searchValue, setSearchValue, handleChange } = useSearch();
   const debouncedValue = useDebounce(searchValue);
-  const { users, setUsers, error, fetchUsers } = useUsers();
   const {
     isEditMode,
     handleEditMode,
@@ -35,28 +32,12 @@ export function SearchContextProvider(props: PropsWithChildren) {
     handleToggleAllUsers,
     handleCheckOneUser,
   } = useEditPanel();
+  const { users, error, fetchUsers, handleDeleteUsers, handleDuplicateUsers } =
+    useUsers(usersIdsSelected, setSearchValue, setUsersIdsSelected);
 
   useEffect(() => {
     fetchUsers(debouncedValue);
   }, [debouncedValue]);
-
-  //deplacer handleDuplicate handleDelete ds useUsers
-  const handleDuplicate = () => {
-    if (!users) return;
-    const duplicateItems = usersIdsSelected.map((userSelected: Id) => {
-      const user = findObjectById(users, userSelected);
-      return { ...user, id: crypto.randomUUID() };
-    });
-    setUsers([...users, ...duplicateItems]);
-  };
-
-  const handleDelete = () => {
-    if (!users) return;
-    const newUsers = removeByIds(users, usersIdsSelected);
-    if (newUsers.length === 0) setSearchValue("");
-    setUsers(newUsers);
-    setUsersIdsSelected([]);
-  };
 
   return (
     <SearchContext.Provider
@@ -70,8 +51,8 @@ export function SearchContextProvider(props: PropsWithChildren) {
         usersIdsSelected,
         handleToggleAllUsers,
         handleCheckOneUser,
-        handleDelete,
-        handleDuplicate,
+        handleDeleteUsers,
+        handleDuplicateUsers,
         error,
       }}
     >
