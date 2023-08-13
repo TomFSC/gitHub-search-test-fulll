@@ -7,7 +7,7 @@ import { useEditPanel } from "../hooks/useEditPanel";
 import { Id, User } from "../types/users";
 import { SearchContextValue } from "../types/context";
 import {
-  differenceBetweenArrays,
+  filterByArrayValues,
   findObjectById,
 } from "../components/pages/githubSearch/helpers/array";
 
@@ -30,8 +30,9 @@ export function SearchContextProvider(props: PropsWithChildren) {
   const { searchValue, setSearchValue, handleSearch } = useSearch();
   const debouncedValue = useDebounce(searchValue);
   const { users, setUsers, error, fetchUsers } = useUsers();
-  const { isEditMode, handleEditMode } = useEditPanel(users as User[]);
   const {
+    isEditMode,
+    handleEditMode,
     usersIdsSelected,
     setUsersIdsSelected,
     handleToggleAllUsers,
@@ -42,6 +43,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
     fetchUsers(debouncedValue);
   }, [debouncedValue]);
 
+  //deplacer handleDuplicate handleDelete ds useUsers
   const handleDuplicate = () => {
     if (!users) return;
     const duplicateItems = usersIdsSelected.map((userSelected: Id) => {
@@ -53,7 +55,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
 
   const handleDelete = () => {
     if (!users) return;
-    const newUsers = differenceBetweenArrays(users, usersIdsSelected);
+    const newUsers = filterByArrayValues(users, usersIdsSelected);
     if (newUsers.length === 0) setSearchValue("");
     setUsers(newUsers);
     setUsersIdsSelected([]);
