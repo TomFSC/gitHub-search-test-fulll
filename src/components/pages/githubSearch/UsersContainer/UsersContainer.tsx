@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../../context/SearchContext";
-import UnknownUsers from "./UnknownUsers/UnknownUsers";
+import EmptyUsers from "./EmptyUsers/EmptyUsers";
 import Users from "./Users/Users";
 
 import "./usersContainer.css";
@@ -10,7 +10,7 @@ function UsersContainer() {
 
   return (
     <div data-testid="users-container" className="users-container">
-      {users === undefined ? <UnknownUsers /> : <Users />}
+      {users === undefined ? <EmptyUsers /> : <Users />}
     </div>
   );
 }
