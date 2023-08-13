@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { Id, User } from "../types/users";
 
-import { getUsers } from "../api/gitHubUsers";
-import { findObjectById, isEmptyArray, removeByIds } from "../helpers/array";
+import { findObjectById, removeByIds } from "../helpers/array";
+import { Id, User } from "../types/users";
 
 export const useUsers = (
   usersIdsSelected: Id[],
@@ -10,29 +9,6 @@ export const useUsers = (
   setUsersIdsSelected: Dispatch<SetStateAction<Id[]>>
 ) => {
   const [users, setUsers] = useState<User[] | null | []>([]);
-  const [error, setError] = useState<null | string>(null);
-
-  const fetchUsers = async (searchValueDebounced: string) => {
-    setError(null);
-    if (searchValueDebounced === "") {
-      setUsers([]);
-      return;
-    }
-    const response = await getUsers(searchValueDebounced);
-    const isEmptyUsers = isEmptyArray(response);
-
-    if (response.message) {
-      setError(response.message);
-      setUsers([]);
-      return;
-    }
-
-    if (isEmptyUsers) {
-      setUsers(null);
-      return;
-    }
-    setUsers(response.items);
-  };
 
   const handleDuplicateUsers = () => {
     if (!users) return;
@@ -53,8 +29,6 @@ export const useUsers = (
 
   return {
     users,
-    error,
-    fetchUsers,
     setUsers,
     handleDuplicateUsers,
     handleDeleteUsers,

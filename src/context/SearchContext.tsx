@@ -6,6 +6,7 @@ import { useEditPanel } from "../hooks/useEditPanel";
 
 import { SearchContextValue } from "../types/context";
 import { useSelectedUsers } from "../hooks/useSelectedUsers";
+import { useFetchUsers } from "../hooks/useFetchUsers";
 
 export const SearchContext = createContext<SearchContextValue>({
   debouncedValue: "",
@@ -24,16 +25,20 @@ export const SearchContext = createContext<SearchContextValue>({
 
 export function SearchContextProvider(props: PropsWithChildren) {
   const { searchValue, setSearchValue, handleChange } = useSearch();
+  const debouncedValue = useDebounce(searchValue);
   const {
     usersIdsSelected,
     setUsersIdsSelected,
     handleToggleAllUsers,
     handleCheckOneUser,
   } = useSelectedUsers();
-  const debouncedValue = useDebounce(searchValue);
   const { isEditMode, handleEditMode } = useEditPanel();
-  const { users, error, fetchUsers, handleDeleteUsers, handleDuplicateUsers } =
-    useUsers(usersIdsSelected, setSearchValue, setUsersIdsSelected);
+  const { users, setUsers, handleDeleteUsers, handleDuplicateUsers } = useUsers(
+    usersIdsSelected,
+    setSearchValue,
+    setUsersIdsSelected
+  );
+  const { error, fetchUsers } = useFetchUsers(setUsers);
 
   useEffect(() => {
     fetchUsers(debouncedValue);
