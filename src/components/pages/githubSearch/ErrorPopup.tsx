@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../context/SearchContext";
 
+import { ClassNames, ERROR_MESSAGE } from "../../../ts/constants";
+
 function ErrorPopup() {
   const { error } = useContext(SearchContext);
 
   if (!error) return null;
 
   return (
-    <div data-testid="error-msg" className="error">
-      <h1>{error}</h1>
+    <div className={ClassNames.ERROR_MESSAGE}>
+      <h1>{ERROR_MESSAGE}</h1>
     </div>
   );
 }
