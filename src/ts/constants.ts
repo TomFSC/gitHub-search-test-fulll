@@ -35,6 +35,7 @@ export enum ClassNames {
 export enum Icons {
   SOLID_RIGHT_FROM_BRACKET = "fa-solid fa-right-from-bracket",
   SOLID_USER_PEN = "fa-solid fa-user-pen",
+  SOLID_CIRCLE_XMARK = "fa-solid fa-circle-xmark",
 }
 
 export enum Labels {

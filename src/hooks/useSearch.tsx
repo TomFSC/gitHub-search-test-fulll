@@ -8,5 +8,9 @@ export const useSearch = () => {
     setSearchValue(value);
   };
 
-  return { searchValue, setSearchValue, handleChange };
+  const handleClearSearchValue = () => {
+    setSearchValue("");
+  };
+
+  return { searchValue, setSearchValue, handleChange, handleClearSearchValue };
 };

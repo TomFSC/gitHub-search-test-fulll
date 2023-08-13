@@ -7,7 +7,8 @@ import { ClassNames, USER_SEARCH_PLACEHOLDER } from "../../../../ts/constants";
 import "./actions.css";
 
 function Actions() {
-  const { isEditMode, searchValue, handleChange } = useContext(SearchContext);
+  const { isEditMode, searchValue, handleChange, handleClearSearchValue } =
+    useContext(SearchContext);
 
   return (
     <section>
@@ -15,7 +16,9 @@ function Actions() {
         className={ClassNames.SEARCH_CONTAINER}
         placeholder={USER_SEARCH_PLACEHOLDER}
         onChange={handleChange}
+        onClick={handleClearSearchValue}
         value={searchValue}
+        hasIcon={true}
       />
       {isEditMode && <EditPanel />}
     </section>
