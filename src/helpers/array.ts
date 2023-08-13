@@ -1,19 +1,23 @@
-import { Id, User } from "../../../../types/users";
+import { Id, User } from "../types/users";
 
 export const findObjectById = (array: User[], id: Id) => {
   const user = array.find((item) => item.id === id);
   return user;
 };
 
-export const filterById = (array: Id[], id: Id) => {
+export const removeById = (array: Id[], id: Id) => {
   const newArray = array.filter((item) => item !== id);
   return newArray;
 };
 
-export const filterByArrayValues = (array1: User[], array2: Id[]) => {
+export const removeByIds = (array1: User[], array2: Id[]) => {
   return array1.filter((item1) => {
     return !array2.some((item2) => {
       return item1.id === item2;
     });
   });
+};
+
+export const isEmptyArray = (array: any[]) => {
+  return array.length === 0;
 };

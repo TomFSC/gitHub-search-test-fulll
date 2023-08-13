@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Id, User } from "../types/users";
-import { filterById } from "../components/pages/githubSearch/helpers/array";
+import { removeById } from "../helpers/array";
+import { EditMode } from "../ts/constants";
 
 export const useEditPanel = (users: User[]) => {
-  const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const [isEditMode, setIsEditMode] = useState<boolean>(EditMode.OFF);
   const [usersIdsSelected, setUsersIdsSelected] = useState<Id[]>([]);
   const handleEditMode = () => {
     setIsEditMode(!isEditMode);
@@ -13,19 +14,20 @@ export const useEditPanel = (users: User[]) => {
     usersIdsSelected.length === users?.length && users?.length !== 0;
 
   const handleToggleAllUsers = () => {
+    if (isEditMode === false) return;
     if (areAllUSersChecked) {
       setUsersIdsSelected([]);
       return;
     }
-    const usersIdsSelected = users.map((user) => {
-      return user.id;
-    });
-    setUsersIdsSelected(usersIdsSelected);
+    const newUsersIdsSelected = users.map((user) => user.id);
+    setUsersIdsSelected(newUsersIdsSelected);
   };
 
   const handleCheckOneUser = (id: Id) => {
-    if (usersIdsSelected.includes(id)) {
-      const newUsersSelected = filterById(usersIdsSelected, id);
+    const isUserIdSelectedAllreadyInArray = usersIdsSelected.includes(id);
+
+    if (isUserIdSelectedAllreadyInArray) {
+      const newUsersSelected = removeById(usersIdsSelected, id);
 
       setUsersIdsSelected(newUsersSelected);
       return;

@@ -6,10 +6,7 @@ import { useEditPanel } from "../hooks/useEditPanel";
 
 import { Id, User } from "../types/users";
 import { SearchContextValue } from "../types/context";
-import {
-  filterByArrayValues,
-  findObjectById,
-} from "../components/pages/githubSearch/helpers/array";
+import { removeByIds, findObjectById } from "../helpers/array";
 
 export const SearchContext = createContext<SearchContextValue>({
   debouncedValue: "",
@@ -55,7 +52,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
 
   const handleDelete = () => {
     if (!users) return;
-    const newUsers = filterByArrayValues(users, usersIdsSelected);
+    const newUsers = removeByIds(users, usersIdsSelected);
     if (newUsers.length === 0) setSearchValue("");
     setUsers(newUsers);
     setUsersIdsSelected([]);
