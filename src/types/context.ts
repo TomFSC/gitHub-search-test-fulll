@@ -3,7 +3,7 @@ import { Id, User } from "./users";
 
 export interface SearchContextValue {
   debouncedValue: string;
-  users: User[] | undefined;
+  users: User[] | null | [];
   isEditMode: boolean;
   handleEditMode: MouseEventHandler;
   searchValue: string;

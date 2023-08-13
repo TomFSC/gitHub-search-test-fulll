@@ -11,7 +11,7 @@ function UsersContainer() {
 
   return (
     <div className={ClassNames.USERS_CONTAINER}>
-      {users === undefined ? <EmptyUsers /> : <Users />}
+      {users === null ? <EmptyUsers /> : <Users />}
     </div>
   );
 }
