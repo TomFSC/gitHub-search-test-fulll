@@ -4,7 +4,7 @@ import {
   removeById,
   findObjectById,
   isEmptyArray,
-  isIncludesInArray,
+  isIncludedInArray,
 } from "../array";
 
 describe("findObjectById", () => {
@@ -82,12 +82,12 @@ describe("isEmptyArray", () => {
   expect(isEmpty).toBe(false);
 });
 
-describe("isIncludesInArray", () => {
+describe("isIncludedInArray", () => {
   test("Should return true if array includes user id", () => {
     const usersIds = [1, 2, 3];
     const userIdToCheck = 2;
 
-    const isEmpty = isIncludesInArray(usersIds, userIdToCheck);
+    const isEmpty = isIncludedInArray(usersIds, userIdToCheck);
 
     expect(isEmpty).toBe(true);
   });
@@ -96,7 +96,7 @@ describe("isIncludesInArray", () => {
     const usersIds = [1, 2, 3];
     const userIdToCheck = 6;
 
-    const isEmpty = isIncludesInArray(usersIds, userIdToCheck);
+    const isEmpty = isIncludedInArray(usersIds, userIdToCheck);
 
     expect(isEmpty).toBe(false);
   });

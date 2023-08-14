@@ -5,7 +5,7 @@ import { useUsers } from "../hooks/useUsers";
 import { useEditPanel } from "../hooks/useEditPanel";
 
 import { SearchContextValue } from "../types/context";
-import { useSelectedUsers } from "../hooks/useSelectedUsers";
+import { useUsersIdsSelected } from "../hooks/useUsersIdsSelected";
 import { useFetchUsers } from "../hooks/useFetchUsers";
 import { useMediaQuery } from "../hooks/useMediaQueries";
 
@@ -29,25 +29,23 @@ export const SearchContext = createContext<SearchContextValue>({
 export function SearchContextProvider(props: PropsWithChildren) {
   const isMobile = useMediaQuery(480);
 
-  const { searchValue, setSearchValue, handleChange, handleClearSearchValue } =
-    useSearch();
+  const { searchValue, handleChange, handleClearSearchValue } = useSearch();
   const debouncedValue = useDebounce(searchValue);
   const {
     usersIdsSelected,
-    setUsersIdsSelected,
     handleToggleAllUsers,
     handleCheckOneUser,
-  } = useSelectedUsers();
+    handleResetIdsSelected,
+  } = useUsersIdsSelected();
   const { isEditMode, handleToggleEditMode } = useEditPanel();
   const { users, setUsers, handleDeleteUsers, handleDuplicateUsers } = useUsers(
     usersIdsSelected,
-    setSearchValue,
-    setUsersIdsSelected
+    handleClearSearchValue,
+    handleResetIdsSelected
   );
-  const { error, fetchUsers } = useFetchUsers(setUsers, setUsersIdsSelected);
+  const { error, fetchUsers } = useFetchUsers(setUsers, handleResetIdsSelected);
 
   useEffect(() => {
-    //reset usersIdsSelected
     fetchUsers(debouncedValue);
   }, [debouncedValue]);
 

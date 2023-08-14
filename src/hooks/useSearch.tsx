@@ -12,5 +12,5 @@ export const useSearch = () => {
     setSearchValue("");
   };
 
-  return { searchValue, setSearchValue, handleChange, handleClearSearchValue };
+  return { searchValue, handleChange, handleClearSearchValue };
 };

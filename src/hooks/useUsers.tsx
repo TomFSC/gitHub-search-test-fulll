@@ -1,34 +1,33 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
-import { findObjectById, removeByIds } from "../helpers/array";
+import { findObjectById, isEmptyArray, removeByIds } from "../helpers/array";
 import { Id, User } from "../types/users";
 
 export const useUsers = (
-  usersIdsSelected: Id[], //remove and pass to event handlers parameters
-  setSearchValue: Dispatch<SetStateAction<string>>,
-  setUsersIdsSelected: Dispatch<SetStateAction<Id[]>>
+  usersIdsSelected: Id[],
+  handleClearSearchValue: Function,
+  handleResetIdsSelected: Function
 ) => {
   const [users, setUsers] = useState<User[] | null | []>([]);
 
   const handleDuplicateUsers = () => {
     if (!users) return;
-    //duplicatedItems
-    const duplicateItems = usersIdsSelected.map((userSelected: Id) => {
+    const duplicatedItems = usersIdsSelected.map((userSelected: Id) => {
       const user = findObjectById(users, userSelected);
       return { ...user, id: crypto.randomUUID() };
     });
-    setUsers([...users, ...duplicateItems]);
+    setUsers([...users, ...duplicatedItems]);
   };
 
   const handleDeleteUsers = () => {
-    //maybe delete condition
     if (!users) return;
     const newUsers = removeByIds(users, usersIdsSelected);
-    //use isEmpty & handleClearSearchValue
-    if (newUsers.length === 0) setSearchValue("");
+    const isNewUsersEmpty = isEmptyArray(newUsers);
+
+    if (isNewUsersEmpty) handleClearSearchValue();
+
     setUsers(newUsers);
-    //resetUsersIdsSelected
-    setUsersIdsSelected([]);
+    handleResetIdsSelected();
   };
 
   return {

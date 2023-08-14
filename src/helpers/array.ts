@@ -22,6 +22,10 @@ export const isEmptyArray = (array: any[]) => {
   return array.length === 0;
 };
 
-export const isIncludesInArray = (array: Id[], id: Id) => {
+export const isIncludedInArray = (array: Id[], id: Id) => {
   return array.includes(id);
+};
+
+export const areAllUsersChecked = (users: User[], usersIds: Id[]) => {
+  return usersIds.length === users?.length && users?.length !== 0;
 };

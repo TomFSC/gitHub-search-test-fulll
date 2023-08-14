@@ -1,16 +1,18 @@
 import { useState } from "react";
 
 import { Id, User } from "../types/users";
-import { removeById } from "../helpers/array";
+import {
+  areAllUsersChecked,
+  isIncludedInArray,
+  removeById,
+} from "../helpers/array";
 
-//useUsersIdsSelected
-export const useSelectedUsers = () => {
+export const useUsersIdsSelected = () => {
   const [usersIdsSelected, setUsersIdsSelected] = useState<Id[]>([]);
 
   const handleToggleAllUsers = (isEditMode: boolean, users: User[]) => {
-    //@TODO: should compare one by one in function
-    const areAllUSersChecked =
-      usersIdsSelected.length === users?.length && users?.length !== 0;
+    const areAllUSersChecked = areAllUsersChecked(users, usersIdsSelected);
+
     if (isEditMode === false) return;
     if (areAllUSersChecked) {
       setUsersIdsSelected([]);
@@ -21,8 +23,10 @@ export const useSelectedUsers = () => {
   };
 
   const handleCheckOneUser = (id: Id) => {
-    //use isIncludedInArray
-    const isUserIdSelectedAllreadyInArray = usersIdsSelected.includes(id);
+    const isUserIdSelectedAllreadyInArray = isIncludedInArray(
+      usersIdsSelected,
+      id
+    );
 
     if (isUserIdSelectedAllreadyInArray) {
       const newUsersSelected = removeById(usersIdsSelected, id);
@@ -33,12 +37,15 @@ export const useSelectedUsers = () => {
     setUsersIdsSelected([...usersIdsSelected, id]);
   };
 
-  //create reset idsSelected
+  const handleResetIdsSelected = () => {
+    setUsersIdsSelected([]);
+  };
 
   return {
-    handleToggleAllUsers,
-    handleCheckOneUser,
     usersIdsSelected,
     setUsersIdsSelected,
+    handleToggleAllUsers,
+    handleCheckOneUser,
+    handleResetIdsSelected,
   };
 };

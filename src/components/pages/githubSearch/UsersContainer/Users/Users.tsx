@@ -5,7 +5,7 @@ import Card from "./Card/Card";
 import { ClassNames } from "../../../../../ts/constants";
 import "./users.css";
 import { Id } from "../../../../../types/users";
-import { isIncludesInArray } from "../../../../../helpers/array";
+import { isIncludedInArray } from "../../../../../helpers/array";
 
 function Users() {
   const { users, usersIdsSelected, isEditMode, handleCheckOneUser } =
@@ -14,7 +14,7 @@ function Users() {
   return (
     <div className={ClassNames.USERS}>
       {users?.map((user, index) => {
-        const isUsersIdsSelectedIncludesId = isIncludesInArray(
+        const isUsersIdsSelectedIncludesId = isIncludedInArray(
           usersIdsSelected,
           user.id as Id
         );

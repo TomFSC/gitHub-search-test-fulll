@@ -48,13 +48,17 @@ describe("useUsers", () => {
     const initialPropsForUseUsers = {
       initialProps: {
         usersIdsSelected: [],
-        setSearchValue: jest.fn(),
-        setUsersIdsSelected: jest.fn(),
+        handleClearSearchValue: jest.fn(),
+        handleResetIdsSelected: jest.fn(),
       },
     };
     const { result } = renderHook(
-      ({ usersIdsSelected, setSearchValue, setUsersIdsSelected }) =>
-        useUsers(usersIdsSelected, setSearchValue, setUsersIdsSelected),
+      ({ usersIdsSelected, handleClearSearchValue, handleResetIdsSelected }) =>
+        useUsers(
+          usersIdsSelected,
+          handleClearSearchValue,
+          handleResetIdsSelected
+        ),
       initialPropsForUseUsers
     );
     const users = result.current.users;

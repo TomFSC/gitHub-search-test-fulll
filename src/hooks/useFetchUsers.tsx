@@ -2,34 +2,32 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 import { getUsers } from "../api/gitHubUsers";
 import { isEmptyArray } from "../helpers/array";
-import { Id, User } from "../types/users";
+import { User } from "../types/users";
 
 export const useFetchUsers = (
   setUsers: Dispatch<SetStateAction<User[] | null | []>>,
-  setUsersIdsSelected: Dispatch<SetStateAction<Id[] | []>>
+  handleResetIdsSelected: Function
 ) => {
   const [error, setError] = useState<null | string>(null);
 
   const fetchUsers = async (searchValueDebounced: string) => {
     setError(null);
-    // move into useEffect
-    setUsersIdsSelected([]);
+    handleResetIdsSelected();
     if (searchValueDebounced === "") {
       setUsers([]);
       return;
     }
     const response = await getUsers(searchValueDebounced);
-    //hasFoundZeroResult
-    const isEmptyUsers = isEmptyArray(response);
+    const hasFoundZeroResult = isEmptyArray(response);
+    const hasExceededApiRateLimit = response.message;
 
-    //hasExceededApiRateLimit
-    if (response.message) {
+    if (hasExceededApiRateLimit) {
       setError(response.message);
       setUsers([]);
       return;
     }
 
-    if (isEmptyUsers) {
+    if (hasFoundZeroResult) {
       setUsers(null);
       return;
     }
