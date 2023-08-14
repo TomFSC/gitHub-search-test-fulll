@@ -1,4 +1,4 @@
-header {
+.header-large {
   background-color: #929292;
   width: 100%;
   min-height: 64px;
@@ -6,31 +6,74 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+
   > h1 {
     font-size: 18px;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
   }
+
+  .header-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    -moz-column-gap: 15px;
+    column-gap: 8px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #479ff8;
+    color: whitesmoke;
+
+    > i {
+      scale: 1.2;
+      width: 15px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
-.header-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+/* Responsive on mobile to refacto by component */
+.header-small {
+  background-color: #929292;
+  width: 100%;
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
-  width: 120px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #479ff8;
-  color: whitesmoke;
-  > i {
-    scale: 1.2;
+  padding: 0 20px;
+
+  > h1 {
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
   }
-  &:hover {
-    cursor: pointer;
+
+  .header-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    -moz-column-gap: 15px;
+    column-gap: 8px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #479ff8;
+    color: whitesmoke;
+
+    > i {
+      scale: 1.2;
+      width: 15px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

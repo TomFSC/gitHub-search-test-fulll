@@ -12,7 +12,8 @@ import {
 import "./header.css";
 
 function Header() {
-  const { isEditMode, handleToggleEditMode } = useContext(SearchContext);
+  const { isEditMode, handleToggleEditMode, isMobile } =
+    useContext(SearchContext);
 
   const buttonIconClassName = isEditMode
     ? Icons.SOLID_RIGHT_FROM_BRACKET
@@ -20,7 +21,7 @@ function Header() {
   const icon = <i className={buttonIconClassName}></i>;
 
   return (
-    <header>
+    <header className={isMobile ? "header-small" : "header-large"}>
       <Title label={HEADER_TITLE} />
       <Button
         className={
@@ -28,7 +29,7 @@ function Header() {
             ? ClassNames.HEADER_BUTTON_ACTIVE
             : ClassNames.HEADER_BUTTON
         }
-        label={Labels.HEADER_BUTTON}
+        label={isMobile ? "" : Labels.HEADER_BUTTON}
         Icon={icon}
         onClick={handleToggleEditMode}
       />

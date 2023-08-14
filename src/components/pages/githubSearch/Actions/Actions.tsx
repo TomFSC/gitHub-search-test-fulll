@@ -7,13 +7,22 @@ import { ClassNames, USER_SEARCH_PLACEHOLDER } from "../../../../ts/constants";
 import "./actions.css";
 
 function Actions() {
-  const { isEditMode, searchValue, handleChange, handleClearSearchValue } =
-    useContext(SearchContext);
+  const {
+    isEditMode,
+    searchValue,
+    handleChange,
+    handleClearSearchValue,
+    isMobile,
+  } = useContext(SearchContext);
 
   return (
     <section>
       <Search
-        className={ClassNames.SEARCH_CONTAINER}
+        className={
+          isMobile
+            ? ClassNames.SEARCH_CONTAINER_SMALL
+            : ClassNames.SEARCH_CONTAINER_LARGE
+        }
         placeholder={USER_SEARCH_PLACEHOLDER}
         onChange={handleChange}
         onClick={handleClearSearchValue}

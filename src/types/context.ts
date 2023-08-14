@@ -15,4 +15,5 @@ export interface SearchContextValue {
   handleDeleteUsers: MouseEventHandler;
   handleDuplicateUsers: MouseEventHandler;
   error: string | null;
+  isMobile: boolean;
 }

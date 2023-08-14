@@ -1,4 +1,4 @@
-.edit-panel {
+.edit-panel-large {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -33,4 +33,13 @@
 
 .count {
   font-weight: bold;
+}
+
+/* responsive mobile*/
+.edit-panel-small {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding: 10px 0px;
 }

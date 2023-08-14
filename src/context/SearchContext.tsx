@@ -7,6 +7,7 @@ import { useEditPanel } from "../hooks/useEditPanel";
 import { SearchContextValue } from "../types/context";
 import { useSelectedUsers } from "../hooks/useSelectedUsers";
 import { useFetchUsers } from "../hooks/useFetchUsers";
+import { useMediaQuery } from "../hooks/useMediaQueries";
 
 export const SearchContext = createContext<SearchContextValue>({
   debouncedValue: "",
@@ -22,9 +23,12 @@ export const SearchContext = createContext<SearchContextValue>({
   handleDeleteUsers: () => {},
   handleDuplicateUsers: () => {},
   error: null,
+  isMobile: false,
 });
 
 export function SearchContextProvider(props: PropsWithChildren) {
+  const isMobile = useMediaQuery(480);
+
   const { searchValue, setSearchValue, handleChange, handleClearSearchValue } =
     useSearch();
   const debouncedValue = useDebounce(searchValue);
@@ -62,6 +66,7 @@ export function SearchContextProvider(props: PropsWithChildren) {
         handleDeleteUsers,
         handleDuplicateUsers,
         error,
+        isMobile,
       }}
     >
       {props.children}
