@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../../context/SearchContext";
 import Title from "../../../reusable-ui/Title";
-import Button from "../../../reusable-ui/Button";
+import Button from "../../../reusable-ui/Button/Button";
 
 import {
   Icons,
   HEADER_TITLE,
   Labels,
   ClassNames,
+  EMPTY_STRING,
 } from "../../../../ts/constants";
-import "./header.css";
+import "./Header.css";
 
 function Header() {
   const { isEditMode, handleToggleEditMode, isMobile } =
@@ -21,15 +22,13 @@ function Header() {
   const icon = <i className={buttonIconClassName}></i>;
 
   return (
-    <header className={isMobile ? "header-small" : "header-large"}>
+    <header
+      className={isMobile ? ClassNames.HEADER_SMALL : ClassNames.HEADER_LARGE}
+    >
       <Title label={HEADER_TITLE} />
       <Button
-        className={
-          isEditMode
-            ? ClassNames.HEADER_BUTTON_ACTIVE
-            : ClassNames.HEADER_BUTTON
-        }
-        label={isMobile ? "" : Labels.HEADER_BUTTON}
+        className={isMobile ? ClassNames.BUTTON_SMALL : ClassNames.BUTTON_LARGE}
+        label={isMobile ? EMPTY_STRING : Labels.HEADER_BUTTON}
         Icon={icon}
         onClick={handleToggleEditMode}
       />

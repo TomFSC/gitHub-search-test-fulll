@@ -1,4 +1,5 @@
 export const DEBOUNCE_DELAY = 500;
+export const EMPTY_STRING = "";
 export const USER_SEARCH_PLACEHOLDER = "Search for user";
 export const EMPTY_USERS_MESSAGE = "No results...";
 export const PROFILE_AVATAR_ALT = "profile-avatar";
@@ -16,8 +17,10 @@ export const HEADER_TITLE = "GitHub Search";
 //Enums
 export enum ClassNames {
   MAIN_CONTAINER = "main-container",
-  HEADER_BUTTON = "header-btn",
-  HEADER_BUTTON_ACTIVE = "header-btn active",
+  HEADER_SMALL = "header-small",
+  HEADER_LARGE = "header-large",
+  BUTTON_SMALL = "button-small",
+  BUTTON_LARGE = "button-large",
   EDIT_PANEL_SMALL = "edit-panel-small",
   EDIT_PANEL_LARGE = "edit-panel-large",
   SEARCH_CONTAINER_SMALL = "search-container-small",

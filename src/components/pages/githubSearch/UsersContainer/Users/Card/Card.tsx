@@ -1,7 +1,7 @@
 import Avatar from "./Avatar";
 import Checkbox from "../../../../../reusable-ui/Checkbox";
 import ProfileInfos from "./ProfileInfos";
-import Button from "../../../../../reusable-ui/Button";
+import Button from "../../../../../reusable-ui/Button/Button";
 
 import { ClassNames, Labels } from "../../../../../../ts/constants";
 import { Id, User } from "../../../../../../types/users";
