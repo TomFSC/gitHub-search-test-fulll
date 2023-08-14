@@ -1,5 +1,8 @@
 import { ChangeEventHandler } from "react";
 
+import "./Checkbox.css";
+import { InputTypes } from "../../../ts/constants";
+
 interface CheckboxProps {
   className?: string;
   onChange: ChangeEventHandler;
@@ -10,7 +13,7 @@ function Checkbox({ className, onChange, checked }: CheckboxProps) {
   return (
     <input
       className={className}
-      type="checkbox"
+      type={InputTypes.CHECKBOX}
       onChange={onChange}
       checked={checked}
     />

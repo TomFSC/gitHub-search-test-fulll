@@ -1,5 +1,5 @@
 import Avatar from "./Avatar";
-import Checkbox from "../../../../../reusable-ui/Checkbox";
+import Checkbox from "../../../../../reusable-ui/Checkbox/Checkbox";
 import ProfileInfos from "./ProfileInfos";
 import Button from "../../../../../reusable-ui/Button/Button";
 

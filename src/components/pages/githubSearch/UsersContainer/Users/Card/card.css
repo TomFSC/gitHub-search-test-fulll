@@ -60,12 +60,3 @@ img {
     cursor: pointer;
   }
 }
-
-.card-checkbox {
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  &:hover {
-    cursor: pointer;
-  }
-}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../../../../context/SearchContext";
-import Checkbox from "../../../../../reusable-ui/Checkbox";
+import Checkbox from "../../../../../reusable-ui/Checkbox/Checkbox";
 import SelectedUsersCount from "./SelectedUsersCount";
 
 import { ClassNames } from "../../../../../../ts/constants";

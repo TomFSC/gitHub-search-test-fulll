@@ -15,6 +15,9 @@ export const EditMode = {
 export const HEADER_TITLE = "GitHub Search";
 
 //Enums
+export enum InputTypes {
+  CHECKBOX = "checkbox",
+}
 export enum ClassNames {
   MAIN_CONTAINER = "main-container",
   HEADER_SMALL = "header-small",
