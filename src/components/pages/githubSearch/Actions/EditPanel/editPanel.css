@@ -5,36 +5,6 @@
   padding: 0 15px 25px;
 }
 
-.select-users {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 8px;
-  column-gap: 8px;
-  & input {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-.edit-options {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 20px;
-  column-gap: 20px;
-  color: #5f6368;
-  font-size: large;
-  & i {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-.count {
-  font-weight: bold;
-}
-
 /* responsive mobile*/
 .edit-panel-small {
   width: 90%;

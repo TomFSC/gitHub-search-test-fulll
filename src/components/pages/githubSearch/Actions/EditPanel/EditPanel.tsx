@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { ClassNames } from "../../../../../ts/constants";
-import EditOptions from "./EditOptions";
+import EditOptions from "./EditOptions/EditOptions";
 
 import SelectUsers from "./SelectUsers/SelectUsers";
-import "./editPanel.css";
+import "./EditPanel.css";
 import { SearchContext } from "../../../../../context/SearchContext";
 
 function EditPanel() {

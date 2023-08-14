@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../../../../context/SearchContext";
 import Checkbox from "../../../../../reusable-ui/Checkbox/Checkbox";
-import SelectedUsersCount from "./SelectedUsersCount";
+import SelectedUsersCount from "./SelectedUsersCount/SelectedUsersCount";
 
 import { ClassNames } from "../../../../../../ts/constants";
+import "./SelectUsers.css";
 
 function SelectUsers() {
   const { isEditMode, users, usersIdsSelected, handleToggleAllUsers } =
     useContext(SearchContext);
 
+  //function
   const areAllUSersChecked =
     usersIdsSelected.length === users?.length && users?.length !== 0;
 

@@ -1,5 +1,7 @@
 import { useContext } from "react";
-import { SearchContext } from "../../../../../../context/SearchContext";
+import { SearchContext } from "../../../../../../../context/SearchContext";
+
+import "./SelectedUsersCount.css";
 
 function SelectedUsersCount() {
   const { usersIdsSelected } = useContext(SearchContext);

@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { SearchContext } from "../../../../../context/SearchContext";
-import Icon from "../../../../reusable-ui/Icon";
+import { SearchContext } from "../../../../../../context/SearchContext";
+import Icon from "../../../../../reusable-ui/Icon";
 
-import { ClassNames } from "../../../../../ts/constants";
+import { ClassNames } from "../../../../../../ts/constants";
 import { getOptionsIcons } from "./optionsIconsConfig";
+import "./EditOptions.css";
 
 function EditOptions() {
   const { handleDeleteUsers, handleDuplicateUsers } = useContext(SearchContext);

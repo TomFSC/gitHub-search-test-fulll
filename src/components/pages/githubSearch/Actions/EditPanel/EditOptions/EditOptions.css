@@ -1,0 +1,13 @@
+.edit-options {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  color: #5f6368;
+  font-size: large;
+  & i {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
