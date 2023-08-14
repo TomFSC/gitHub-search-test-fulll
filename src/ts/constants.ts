@@ -17,6 +17,7 @@ export const HEADER_TITLE = "GitHub Search";
 //Enums
 export enum InputTypes {
   CHECKBOX = "checkbox",
+  TEXT = "text",
 }
 export enum ClassNames {
   MAIN_CONTAINER = "main-container",
@@ -29,6 +30,7 @@ export enum ClassNames {
   EDIT_PANEL_LARGE = "edit-panel-large",
   SEARCH_CONTAINER_SMALL = "search-container-small",
   SEARCH_CONTAINER_LARGE = "search-container-large",
+  SEARCH_INPUT = "search-input",
   SELECT_USERS = "select-users",
   EDIT_OPTIONS = "edit-options",
   USERS_CONTAINER = "users-container",

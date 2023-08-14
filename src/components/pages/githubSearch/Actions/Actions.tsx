@@ -1,35 +1,19 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../../context/SearchContext";
-import Search from "../../../reusable-ui/Search";
+import Search from "./Search/Search";
 import EditPanel from "./EditPanel/EditPanel";
 
-import { ClassNames, USER_SEARCH_PLACEHOLDER } from "../../../../ts/constants";
 import "./actions.css";
 
 function Actions() {
-  const {
-    isEditMode,
-    searchValue,
-    handleChange,
-    handleClearSearchValue,
-    isMobile,
-  } = useContext(SearchContext);
+  const { isEditMode, searchValue, handleClearSearchValue } =
+    useContext(SearchContext);
+
+  const hasIcon = searchValue !== "";
 
   return (
     <section>
-      <Search
-        className={
-          isMobile
-            ? ClassNames.SEARCH_CONTAINER_SMALL
-            : ClassNames.SEARCH_CONTAINER_LARGE
-        }
-        placeholder={USER_SEARCH_PLACEHOLDER}
-        onChange={handleChange}
-        onClick={handleClearSearchValue}
-        value={searchValue}
-        //search value !== ""
-        hasIcon={true}
-      />
+      <Search hasIcon={hasIcon} onClick={handleClearSearchValue} />
       {isEditMode && <EditPanel />}
     </section>
   );
