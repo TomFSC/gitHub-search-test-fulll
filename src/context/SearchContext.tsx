@@ -6,7 +6,7 @@ import { useEditPanel } from "../hooks/useEditPanel";
 
 import { SearchContextValue } from "../types/context";
 import { useUsersIdsSelected } from "../hooks/useUsersIdsSelected";
-import { useFetchUsers } from "../hooks/useFetchUsers";
+import { useFetchUsers } from "../api/hooks/useFetchUsers";
 import { useMediaQuery } from "../hooks/useMediaQueries";
 
 export const SearchContext = createContext<SearchContextValue>({
@@ -39,7 +39,6 @@ export function SearchContextProvider(props: PropsWithChildren) {
   } = useUsersIdsSelected();
   const { isEditMode, handleToggleEditMode } = useEditPanel();
   const { users, setUsers, handleDeleteUsers, handleDuplicateUsers } = useUsers(
-    usersIdsSelected,
     handleClearSearchValue,
     handleResetIdsSelected
   );

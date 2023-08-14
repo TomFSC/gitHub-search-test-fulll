@@ -1,20 +1,14 @@
-import { MouseEventHandler } from "react";
+import { Icons } from "../../../../../../ts/constants";
 
 export interface OptionIcon {
   className: string;
-  onClick: MouseEventHandler;
 }
 
-export const getOptionsIcons = (
-  onDuplicate: MouseEventHandler,
-  onDelete: MouseEventHandler
-): OptionIcon[] => [
+export const getIconsClassNames = (): OptionIcon[] => [
   {
-    className: "fa-regular fa-copy",
-    onClick: onDuplicate,
+    className: Icons.REGULAR_COPY,
   },
   {
-    className: "fa-regular fa-trash-can",
-    onClick: onDelete,
+    className: Icons.REGULAR_TRACH_CAN,
   },
 ];

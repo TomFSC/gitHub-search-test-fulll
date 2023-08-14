@@ -53,12 +53,8 @@ describe("useUsers", () => {
       },
     };
     const { result } = renderHook(
-      ({ usersIdsSelected, handleClearSearchValue, handleResetIdsSelected }) =>
-        useUsers(
-          usersIdsSelected,
-          handleClearSearchValue,
-          handleResetIdsSelected
-        ),
+      ({ handleClearSearchValue, handleResetIdsSelected }) =>
+        useUsers(handleClearSearchValue, handleResetIdsSelected),
       initialPropsForUseUsers
     );
     const users = result.current.users;

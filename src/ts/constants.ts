@@ -44,6 +44,8 @@ export enum ClassNames {
 }
 
 export enum Icons {
+  REGULAR_COPY = "fa-regular fa-copy",
+  REGULAR_TRACH_CAN = "fa-regular fa-trash-can",
   SOLID_RIGHT_FROM_BRACKET = "fa-solid fa-right-from-bracket",
   SOLID_USER_PEN = "fa-solid fa-user-pen",
   SOLID_CIRCLE_XMARK = "fa-solid fa-circle-xmark",

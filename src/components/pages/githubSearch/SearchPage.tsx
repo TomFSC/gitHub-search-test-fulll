@@ -1,7 +1,7 @@
 import Header from "./Header/Header";
 import Actions from "./Actions/Actions";
 import UsersContainer from "./UsersContainer/UsersContainer";
-import ErrorPopup from "./ErrorPopup";
+import ErrorPopup from "./ErrorPopup/ErrorPopup";
 
 import { ClassNames } from "../../../ts/constants";
 import "./searchPage.css";

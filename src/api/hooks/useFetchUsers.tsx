@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
-import { getUsers } from "../api/gitHubUsers";
-import { isEmptyArray } from "../helpers/array";
-import { User } from "../types/users";
+import { getUsers } from "../gitHubUsers";
+import { isEmptyArray } from "../../helpers/array";
+import { User } from "../../types/users";
 
 export const useFetchUsers = (
   setUsers: Dispatch<SetStateAction<User[] | null | []>>,

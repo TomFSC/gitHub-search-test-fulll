@@ -1,7 +1,7 @@
 import { MouseEventHandler, useContext } from "react";
 import { SearchContext } from "../../../../../context/SearchContext";
 import Input from "../../../../reusable-ui/Input/Input";
-import Icon from "../../../../reusable-ui/Icon";
+import Icon from "../../../../reusable-ui/SharedIcon/Icon";
 
 import {
   ClassNames,
