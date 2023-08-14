@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { SearchContext } from "../../../context/SearchContext";
+import { SearchContext } from "../../../../context/SearchContext";
 
-import { ClassNames, ERROR_MESSAGE } from "../../../ts/constants";
+import { ClassNames, ERROR_MESSAGE } from "../../../../ts/constants";
+import "./ErrorPopup.css";
 
 function ErrorPopup() {
   const { error } = useContext(SearchContext);
