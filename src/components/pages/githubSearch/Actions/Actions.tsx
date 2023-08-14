@@ -27,6 +27,7 @@ function Actions() {
         onChange={handleChange}
         onClick={handleClearSearchValue}
         value={searchValue}
+        //search value !== ""
         hasIcon={true}
       />
       {isEditMode && <EditPanel />}

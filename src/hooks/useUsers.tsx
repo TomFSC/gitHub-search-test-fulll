@@ -4,7 +4,7 @@ import { findObjectById, removeByIds } from "../helpers/array";
 import { Id, User } from "../types/users";
 
 export const useUsers = (
-  usersIdsSelected: Id[],
+  usersIdsSelected: Id[], //remove and pass to event handlers parameters
   setSearchValue: Dispatch<SetStateAction<string>>,
   setUsersIdsSelected: Dispatch<SetStateAction<Id[]>>
 ) => {
@@ -12,6 +12,7 @@ export const useUsers = (
 
   const handleDuplicateUsers = () => {
     if (!users) return;
+    //duplicatedItems
     const duplicateItems = usersIdsSelected.map((userSelected: Id) => {
       const user = findObjectById(users, userSelected);
       return { ...user, id: crypto.randomUUID() };
@@ -20,10 +21,13 @@ export const useUsers = (
   };
 
   const handleDeleteUsers = () => {
+    //maybe delete condition
     if (!users) return;
     const newUsers = removeByIds(users, usersIdsSelected);
+    //use isEmpty & handleClearSearchValue
     if (newUsers.length === 0) setSearchValue("");
     setUsers(newUsers);
+    //resetUsersIdsSelected
     setUsersIdsSelected([]);
   };
 

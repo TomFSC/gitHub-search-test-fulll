@@ -12,14 +12,17 @@ export const useFetchUsers = (
 
   const fetchUsers = async (searchValueDebounced: string) => {
     setError(null);
+    // move into useEffect
     setUsersIdsSelected([]);
     if (searchValueDebounced === "") {
       setUsers([]);
       return;
     }
     const response = await getUsers(searchValueDebounced);
+    //hasFoundZeroResult
     const isEmptyUsers = isEmptyArray(response);
 
+    //hasExceededApiRateLimit
     if (response.message) {
       setError(response.message);
       setUsers([]);
@@ -30,6 +33,7 @@ export const useFetchUsers = (
       setUsers(null);
       return;
     }
+
     setUsers(response.items);
   };
 
