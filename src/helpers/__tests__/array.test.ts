@@ -5,6 +5,7 @@ import {
   findObjectById,
   isEmptyArray,
   isIncludedInArray,
+  areAllUsersChecked,
 } from "../array";
 
 describe("findObjectById", () => {
@@ -99,5 +100,25 @@ describe("isIncludedInArray", () => {
     const isEmpty = isIncludedInArray(usersIds, userIdToCheck);
 
     expect(isEmpty).toBe(false);
+  });
+});
+
+describe("areAllUsersChecked", () => {
+  test("Should return true if all users ids are include in ids", () => {
+    const users = Users.SMALL;
+    const usersIds = [1, 2];
+
+    const isUsersIncludesUsersIds = areAllUsersChecked(users, usersIds);
+
+    expect(isUsersIncludesUsersIds).toBe(true);
+  });
+
+  test("Should return true if all users ids are not include in ids", () => {
+    const users = Users.SMALL;
+    const usersIds = [1];
+
+    const isUsersIncludesUsersIds = areAllUsersChecked(users, usersIds);
+
+    expect(isUsersIncludesUsersIds).toBe(false);
   });
 });
