@@ -48,15 +48,3 @@ img {
     text-overflow: ellipsis;
   }
 }
-
-.card-btn {
-  width: 80%;
-  height: 25px;
-  border: none;
-  background-color: #479ff8;
-  border-radius: 5px;
-  font-size: 11px;
-  &:hover {
-    cursor: pointer;
-  }
-}

@@ -35,7 +35,7 @@ export enum ClassNames {
   USERS = "users",
   CARD_CONTAINER = "card-container",
   CARD_CHECKBOX = "card-checkbox",
-  CARD_BUTTON = "card-btn",
+  CARD_BUTTON = "card-button",
   AVATAR = "avatar",
   PROFILE_INFOS = "profile-infos",
   ERROR_MESSAGE = "error",
