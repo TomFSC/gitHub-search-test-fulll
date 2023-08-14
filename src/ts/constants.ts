@@ -19,6 +19,7 @@ export enum ClassNames {
   MAIN_CONTAINER = "main-container",
   HEADER_SMALL = "header-small",
   HEADER_LARGE = "header-large",
+  TITLE = "title",
   BUTTON_SMALL = "button-small",
   BUTTON_LARGE = "button-large",
   EDIT_PANEL_SMALL = "edit-panel-small",

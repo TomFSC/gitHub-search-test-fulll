@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SearchContext } from "../../../../context/SearchContext";
-import Title from "../../../reusable-ui/Title";
+import Title from "../../../reusable-ui/Title/Title";
 import Button from "../../../reusable-ui/Button/Button";
 
 import {

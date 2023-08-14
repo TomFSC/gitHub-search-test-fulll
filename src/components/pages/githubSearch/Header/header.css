@@ -6,12 +6,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  > h1 {
-    font-size: 18px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-  }
 }
 
 /* Responsive on mobile to refacto by component */
@@ -23,10 +17,4 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-
-  > h1 {
-    font-size: 18px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-  }
 }
