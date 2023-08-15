@@ -1,5 +1,6 @@
 export const DEBOUNCE_DELAY = 500;
 export const EMPTY_STRING = "";
+export const EMPTY_ARRAY = [];
 export const USER_SEARCH_PLACEHOLDER = "Search for user";
 export const EMPTY_USERS_MESSAGE = "No results...";
 export const PROFILE_AVATAR_ALT = "profile-avatar";

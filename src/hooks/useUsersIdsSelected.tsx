@@ -6,16 +6,17 @@ import {
   isIncludedInArray,
   removeById,
 } from "../helpers/array";
+import { EMPTY_ARRAY } from "../ts/constants";
 
-export const useUsersIdsSelected = () => {
-  const [usersIdsSelected, setUsersIdsSelected] = useState<Id[]>([]);
+export const useUsersIdsSelected = (defaultState: Id[] | [] = EMPTY_ARRAY) => {
+  const [usersIdsSelected, setUsersIdsSelected] = useState<Id[]>(defaultState);
 
   const handleToggleAllUsers = (isEditMode: boolean, users: User[]) => {
     const areAllUSersChecked = areAllUsersChecked(users, usersIdsSelected);
 
     if (isEditMode === false) return;
     if (areAllUSersChecked) {
-      setUsersIdsSelected([]);
+      handleResetIdsSelected();
       return;
     }
     const newUsersIdsSelected = users.map((user) => user.id);
@@ -38,7 +39,7 @@ export const useUsersIdsSelected = () => {
   };
 
   const handleResetIdsSelected = () => {
-    setUsersIdsSelected([]);
+    setUsersIdsSelected(EMPTY_ARRAY);
   };
 
   return {
