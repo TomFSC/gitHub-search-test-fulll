@@ -1,4 +1,5 @@
 export const DEBOUNCE_DELAY = 500;
+export const MOBILE_BREAKPOINT = 480;
 export const EMPTY_STRING = "";
 export const EMPTY_ARRAY = [];
 export const USER_SEARCH_PLACEHOLDER = "Search for user";
@@ -6,6 +7,8 @@ export const EMPTY_USERS_MESSAGE = "No results...";
 export const PROFILE_AVATAR_ALT = "profile-avatar";
 export const ERROR_MESSAGE =
   "API rate limit exceeded, please wait before next request.";
+export const SINGLE_ELEMENT_SELECTED = " element selected";
+export const MULTIPLE_ELEMENTS_SELECTED = " elements selected";
 
 export const EditMode = {
   ON: true,
@@ -33,6 +36,8 @@ export enum ClassNames {
   SEARCH_CONTAINER_LARGE = "search-container-large",
   SEARCH_INPUT = "search-input",
   SELECT_USERS = "select-users",
+  SELECTED_USERS_COUNT = "selected-users-count",
+  COUNT = "count",
   EDIT_OPTIONS = "edit-options",
   USERS_CONTAINER = "users-container",
   USERS = "users",

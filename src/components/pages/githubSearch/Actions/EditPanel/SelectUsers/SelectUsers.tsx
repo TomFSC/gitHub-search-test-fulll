@@ -17,12 +17,13 @@ function SelectUsers() {
     usersIdsSelected
   );
 
+  const onChange = () => {
+    handleToggleAllUsers(isEditMode, users);
+  };
+
   return (
     <div className={ClassNames.SELECT_USERS}>
-      <Checkbox
-        onChange={() => handleToggleAllUsers(isEditMode, users)}
-        checked={areAllUSersChecked}
-      />
+      <Checkbox onChange={onChange} checked={areAllUSersChecked} />
       <SelectedUsersCount />
     </div>
   );

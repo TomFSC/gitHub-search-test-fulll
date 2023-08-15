@@ -12,6 +12,9 @@
     position: absolute;
     color: #929292;
     right: 10px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -29,5 +32,8 @@
     position: absolute;
     color: #929292;
     right: 10px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

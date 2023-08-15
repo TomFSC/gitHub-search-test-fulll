@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { ClassNames } from "../../../../../ts/constants";
-import EditOptions from "./EditOptions/EditOptions";
-
-import SelectUsers from "./SelectUsers/SelectUsers";
-import "./EditPanel.css";
 import { SearchContext } from "../../../../../context/SearchContext";
+import EditOptions from "./EditOptions/EditOptions";
+import SelectUsers from "./SelectUsers/SelectUsers";
+
+import { ClassNames } from "../../../../../ts/constants";
+import "./EditPanel.css";
 
 function EditPanel() {
   const { isMobile } = useContext(SearchContext);
+
   return (
     <div
       className={

@@ -13,12 +13,12 @@ function EditOptions() {
 
   return (
     <div className={ClassNames.EDIT_OPTIONS}>
-      {editOptionsIcons.map(({ className }) => {
-        const hasDeleteIcon = className === Icons.REGULAR_TRACH_CAN;
+      {editOptionsIcons.map(({ OptionIcon }) => {
+        const hasDeleteIcon = OptionIcon === Icons.REGULAR_TRACH_CAN;
         return (
           <Icon
-            key={className}
-            className={className}
+            key={OptionIcon}
+            className={OptionIcon}
             onClick={() => {
               hasDeleteIcon
                 ? handleDeleteUsers(usersIdsSelected)

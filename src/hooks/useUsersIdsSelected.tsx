@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-import { Id, User } from "../types/users";
 import {
   areAllUsersChecked,
   isIncludedInArray,
   removeById,
 } from "../helpers/array";
+import { Id, User } from "../types/users";
 import { EMPTY_ARRAY } from "../ts/constants";
 
 export const useUsersIdsSelected = (defaultState: Id[] | [] = EMPTY_ARRAY) => {
-  const [usersIdsSelected, setUsersIdsSelected] = useState<Id[]>(defaultState);
+  const [usersIdsSelected, setUsersIdsSelected] = useState<Id[] | []>(
+    defaultState
+  );
 
   const handleToggleAllUsers = (isEditMode: boolean, users: User[]) => {
     const areAllUSersChecked = areAllUsersChecked(users, usersIdsSelected);

@@ -8,7 +8,7 @@ import "./searchPage.css";
 
 function SearchPage() {
   return (
-    <div data-testid="main-container" className={ClassNames.MAIN_CONTAINER}>
+    <div className={ClassNames.MAIN_CONTAINER}>
       <Header />
       <Actions />
       <UsersContainer />

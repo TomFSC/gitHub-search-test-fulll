@@ -1,14 +1,14 @@
 import { Icons } from "../../../../../../ts/constants";
 
 export interface OptionIcon {
-  className: string;
+  OptionIcon: string;
 }
 
 export const getIconsClassNames = (): OptionIcon[] => [
   {
-    className: Icons.REGULAR_COPY,
+    OptionIcon: Icons.REGULAR_COPY,
   },
   {
-    className: Icons.REGULAR_TRACH_CAN,
+    OptionIcon: Icons.REGULAR_TRACH_CAN,
   },
 ];
