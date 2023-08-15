@@ -1,3 +1,3 @@
-export const isNotEmptyString = (string: string) => {
-  return string !== "";
+export const isEmptyString = (string: string) => {
+  return string === "";
 };
