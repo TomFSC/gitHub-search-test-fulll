@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from "react";
+import { EMPTY_STRING } from "../ts/constants";
 
-export const useSearch = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
+export const useSearch = (defaultState: string = EMPTY_STRING) => {
+  const [searchValue, setSearchValue] = useState<string>(defaultState);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
@@ -9,7 +10,7 @@ export const useSearch = () => {
   };
 
   const handleClearSearchValue = () => {
-    setSearchValue("");
+    setSearchValue(EMPTY_STRING);
   };
 
   return { searchValue, handleChange, handleClearSearchValue };

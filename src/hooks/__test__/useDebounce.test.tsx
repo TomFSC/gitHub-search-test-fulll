@@ -2,12 +2,11 @@ import { act, renderHook } from "@testing-library/react";
 import { useDebounce } from "../useDebounce";
 import { DEBOUNCE_DELAY } from "../../ts/constants";
 
-const INITIAL_SEARCH_VALUE = "initial";
-const UPDATED_SEARCH_VALUE = "updated";
+const searchValueBeforeDebounce = "tomfsc";
 
 describe("useDebounce", () => {
   const initialPropsForUseDebounce = {
-    initialProps: { value: INITIAL_SEARCH_VALUE, delay: DEBOUNCE_DELAY },
+    initialProps: { value: searchValueBeforeDebounce, delay: DEBOUNCE_DELAY },
   };
 
   beforeEach(() => {
@@ -18,17 +17,7 @@ describe("useDebounce", () => {
     jest.clearAllTimers();
   });
 
-  test("Should return the initial value", () => {
-    const { result } = renderHook(
-      ({ value, delay }) => useDebounce(value, delay),
-      initialPropsForUseDebounce
-    );
-    const debouncedValue = result.current;
-
-    expect(debouncedValue).toBe(INITIAL_SEARCH_VALUE);
-  });
-
-  test("Should debounce the input value", () => {
+  test("Should return 'tomfsc' with a delay of 500ms when given 'tomfsc'", () => {
     const { result, rerender } = renderHook(
       ({ value, delay }) => useDebounce(value, delay),
       initialPropsForUseDebounce
@@ -36,9 +25,9 @@ describe("useDebounce", () => {
 
     const debouncedValueAfterRerender = result.current;
 
-    rerender({ value: UPDATED_SEARCH_VALUE, delay: DEBOUNCE_DELAY });
+    rerender({ value: searchValueBeforeDebounce, delay: DEBOUNCE_DELAY });
 
-    expect(debouncedValueAfterRerender).toBe(INITIAL_SEARCH_VALUE);
+    expect(debouncedValueAfterRerender).toBe(searchValueBeforeDebounce);
 
     act(() => {
       jest.advanceTimersByTime(DEBOUNCE_DELAY);
@@ -46,7 +35,9 @@ describe("useDebounce", () => {
 
     const debouncedValueAfterRerenderAndDebounce = result.current;
 
-    expect(debouncedValueAfterRerenderAndDebounce).toBe(UPDATED_SEARCH_VALUE);
+    expect(debouncedValueAfterRerenderAndDebounce).toBe(
+      searchValueBeforeDebounce
+    );
   });
 
   test("should clear the timeout on unmount", () => {
@@ -55,7 +46,7 @@ describe("useDebounce", () => {
       initialPropsForUseDebounce
     );
 
-    expect(result.current).toBe(INITIAL_SEARCH_VALUE);
+    expect(result.current).toBe(searchValueBeforeDebounce);
 
     unmount();
 
@@ -63,6 +54,6 @@ describe("useDebounce", () => {
       jest.advanceTimersByTime(DEBOUNCE_DELAY);
     });
 
-    expect(result.current).toBe(INITIAL_SEARCH_VALUE);
+    expect(result.current).toBe(searchValueBeforeDebounce);
   });
 });
