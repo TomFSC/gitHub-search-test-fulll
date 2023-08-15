@@ -1,0 +1,11 @@
+.select-users {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+  column-gap: 8px;
+  & input {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

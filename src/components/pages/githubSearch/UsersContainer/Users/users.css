@@ -1,0 +1,9 @@
+.users {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, -webkit-max-content));
+  grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+  justify-content: center;
+  row-gap: 20px;
+  -moz-column-gap: 25px;
+  column-gap: 25px;
+}

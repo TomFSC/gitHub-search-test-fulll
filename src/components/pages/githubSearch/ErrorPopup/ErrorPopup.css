@@ -1,0 +1,15 @@
+.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  background-color: #d2d2d2;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px gray;
+  padding: 10px;
+  > h1 {
+    color: red;
+    font-size: 25;
+  }
+}

@@ -1,0 +1,20 @@
+.header-large {
+  background-color: #929292;
+  width: 100%;
+  min-height: 64px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive on mobile to refacto by component */
+.header-small {
+  background-color: #929292;
+  width: 100%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}

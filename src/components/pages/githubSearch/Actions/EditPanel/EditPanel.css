@@ -1,0 +1,15 @@
+.edit-panel-large {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px 25px;
+}
+
+/* responsive mobile*/
+.edit-panel-small {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding: 10px 0px;
+}
