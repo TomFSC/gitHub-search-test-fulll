@@ -4,7 +4,7 @@ import Search from "./Search/Search";
 import EditPanel from "./EditPanel/EditPanel";
 
 import { isEmptyString } from "../../../../helpers/string";
-import "./actions.css";
+import "./Actions.css";
 
 function Actions() {
   const { isEditMode, searchValue, handleClearSearchValue } =
